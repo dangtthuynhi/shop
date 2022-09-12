@@ -1,0 +1,41 @@
+.container1 {
+    display: flex;
+    align-items: center;
+    justify-content: center
+  }
+  .image1 {
+    flex-basis: 40%;
+    order: 2;
+  }
+  .text1 {
+    color: #CD5C5C;
+    padding-right: 80px;
+    font: italic 8px "Fira Sans", serif;
+  }
+
+  .process-btn-a {
+	font-size: 18px;
+	line-height: 20px;
+	text-transform: uppercase;
+	width: 307px;
+	padding: 14px 10px;
+	display: block;
+	text-align: center;
+	float: right;
+	font-weight: 700;
+	letter-spacing: 2px;
+	word-spacing: 1px;
+	-webkit-transition: all .25s linear;
+	transition: all .25s linear;
+	color: rgb(52, 49, 49);
+	background: #f8f8f8;
+}
+
+.process-btn-a .fa-check {
+	margin: 0 0 0 1px;
+}
+
+.process-btn-a:hover {
+	background: #f6f6f6;
+	color: #494949;
+}

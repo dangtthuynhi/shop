@@ -1,0 +1,139 @@
+<%- include ('css.ejs') %>
+	<%- include ('header.ejs') %>
+		<!-- mt side menu start here -->
+		<!-- mt search popup start here -->
+		<%- include ('search.ejs') %>
+			<!-- mt search popup end here -->
+			<!-- mt main slider start here -->
+			<div class="mt-main-slider">
+				<!-- slider banner-slider start here -->
+				<div class="slider banner-slider">
+					<!-- holder start here -->
+					<div class="holder text-center" style="background-image: url(<%=banners[0].imagePath%>);">
+						<div class="container">
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="text centerize">
+										<!-- <strong class="title">SẢN PHẨM HIỆN ĐẠI</strong> -->
+										<h1>SẢN PHẨM</h1>
+										<h2>SIÊU NHẸ</h2>
+										<div class="txt">
+											<!-- <p>Chỉ 12kg/1m
+										</p> -->
+										</div>
+										<a href="/products" class="shop">Xem ngay</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- holder end here -->
+
+					<!-- holder start here -->
+					<div class="holder text-center" style="background-image: url(<%=banners[1].imagePath%>);">
+						<div class="container">
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="text right">
+										<!-- <strong class="title">FURNITURE DESIGNS IDEAS</strong> -->
+										<h1>THIẾT KẾ</h1>
+										<h2>TỐI GIẢN</h2>
+										<!-- <div class="txt">
+										<p>Consectetur adipisicing elit. Beatae accusamus, optio, repellendus inventore
+										</p>
+									</div> -->
+										<a href="/products" class="shop">XEM NGAY</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- holder end here -->
+
+					<!-- holder start here -->
+					<div class="holder text-center" style="background-image: url(<%=banners[2].imagePath%>);">
+						<div class="container">
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="text">
+										<!-- <strong class="title">FURNITURE DESIGNS IDEAS</strong> -->
+										<h1>THIẾT KẾ</h1>
+										<h2>ĐỘC ĐÁO</h2>
+										<!-- <div class="txt">
+										<p>Consectetur adipisicing elit. Beatae accusamus, optio, repellendus inventore
+										</p>
+									</div> -->
+										<a href="/products" class="shop">XEM NGAY</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- holder end here -->
+				</div>
+				<!-- slider regular end here -->
+			</div><!-- mt main slider end here -->
+			<!-- mt main start here -->
+			<main id="mt-main">
+				<!-- mt bestseller start here -->
+				<div class="mt-bestseller bg-grey text-center wow fadeInUp" data-wow-delay="0.4s">
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12 mt-heading text-uppercase">
+								<h2 class="heading">SẢN PHẨM MỚI</h2>
+								<!-- <p>EXCEPTEUR SINT OCCAECAT</p> -->
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<div class="bestseller-slider">
+									<% for(let i=0; i<products.length; i++) { %>
+										<div class="slide">
+											<!-- mt product1 center start here -->
+											<div class="mt-product1 large">
+												<div class="box">
+													<div class="b1">
+														<div class="b2">
+															<a
+																href="/products/<%=products[i].category.slug%>/<%=products[i]._id%>"><img
+																	src="<%= products[i].imagePaths[0] %>"
+																	alt="<%= products[i].title %>" height="300" width="300"></a>
+															<span class="caption">
+																<span class="best-price">Giá tốt</span>
+															</span>
+															<ul class="links add">
+																<li><a href="/add-to-cart/<%=products[i]._id%>"><i
+																			class="icon-handbag"></i></a></li>
+																<!-- <li><a href="#"><i class="icomoon icon-heart-empty"></i></a>
+															</li>
+															<li><a href="#"><i class="icomoon icon-exchange"></i></a>
+															</li> -->
+															</ul>
+														</div>
+													</div>
+												</div>
+												<div class="txt">
+													<strong class="title"><a
+															href="/products/<%=products[i].category.slug%>/<%=products[i]._id%>">
+															<%= products[i].title %>
+														</a></strong>
+													<span class="price">
+														<!-- <i class="fa fa-eur"></i>  -->
+														<span>
+															<%= products[i].price %> &#x20AB;
+														</span>
+													</span>
+												</div>
+											</div><!-- mt product1 center end here -->
+										</div>
+										<% } %>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- mt bestseller start here -->
+			</main><!-- mt main end here -->
+			<!-- footer of the Page -->
+			<%- include ('footer.ejs') %>
+				<%- include ('js.ejs') %>

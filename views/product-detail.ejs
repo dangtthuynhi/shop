@@ -1,0 +1,166 @@
+<%- include ('css.ejs') %>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <%- include ('header.ejs') %>
+        <!-- mt side menu start here -->
+        <!-- mt search popup start here -->
+        <%- include ('search.ejs') %>
+            <!-- mt search popup end here -->
+            <!-- mt main start here -->
+            <main id="mt-main">
+                <!-- Mt Product Detial of the Page -->
+                <section class="mt-product-detial wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <!-- Slider of the Page -->
+                                <div class="slider">
+                                    <!-- Comment List of the Page -->
+                                    <!-- <ul class="list-unstyled comment-list">
+                                <li><a href="#"><i class="fa fa-heart"></i>27</a></li>
+                                <li><a href="#"><i class="fa fa-comments"></i>12</a></li>
+                                <li><a href="#"><i class="fa fa-share-alt"></i>14</a></li>
+                            </ul> -->
+                                    <!-- Comment List of the Page end -->
+                                    <!-- Product Slider of the Page -->
+                                    <!-- <div class="product-slider">
+                                        <div class="slide">
+                                            <img src="<%=product.imagePaths[0]%>" alt="image descrption">
+                                        </div>
+                                    </div> -->
+                                    <figure class="zoom" style="background:url(<%=product.imagePaths[0]%>)"
+                                        onmousemove="zoom(event)" ontouchmove="zoom(event)">
+                                        <img src="<%=product.imagePaths[0]%>" />
+                                    </figure>
+                                    <ul class="list-unstyled slick-slider pagg-slider">
+                                        <%product.imagePaths.forEach((image)=>{%>
+                                            <li>
+                                                <div class="img"><img src="<%=image%>" alt="image description">
+                                                </div>
+                                            </li>
+                                            <%})%>
+                                    </ul>
+                                </div>
+                                <!-- Product Slider of the Page end -->
+                                <!-- Pagg Slider of the Page -->
+                                <!-- <ul class="list-unstyled slick-slider pagg-slider">
+                                        <%product.imagePaths.forEach((image)=>{%>
+                                            <li>
+                                                <div class="img"><img src="<%=image%>" alt="image description">
+                                                </div>
+                                            </li>
+                                            <%})%>
+                                    </ul> -->
+                                <!-- Pagg Slider of the Page end -->
+                                <!-- </div> -->
+                                <!-- Slider of the Page end -->
+                                <!-- Detail Holder of the Page -->
+                                <div class="detial-holder">
+                                    <!-- Breadcrumbs of the Page -->
+                                    <!-- <ul class="list-unstyled breadcrumbs">
+                                <li><a href="#">Chairs <i class="fa fa-angle-right"></i></a></li>
+                                <li>Products</li>
+                            </ul> -->
+                                    <!-- Breadcrumbs of the Page end -->
+                                    <h2>
+                                        <%=product.title%>
+                                    </h2>
+                                    <!-- Rank Rating of the Page -->
+                                    <!-- Rank Rating of the Page end -->
+                                    <!-- <ul class="list-unstyled list">
+                                        <li><a href="https://www.facebook.com/sharer/sharer.php?u=example.org"
+                                                target="_blank"><i class="fa fa-share-alt"></i></a></li>
+                                    </ul> -->
+                                    <div class="txt-wrap">
+                                        <%-product.description%>
+                                    </div>
+                                    <div class="text-holder">
+                                        <span class="price">
+                                            <%=product.price%> &#x20AB;
+                                        </span>
+                                    </div>
+                                    <!-- Product Form of the Page -->
+                                    <form action="/add-to-cart/<%=product._id%>" class="product-form" method="GET">
+                                        <fieldset>
+                                            <div class="row-val">
+                                                <label for="qty">Số lượng</label>
+                                                <input name="qty" type="number" id="qty" placeholder="1" min="1"
+                                                    value="1">
+                                            </div>
+                                            <div class="row-val">
+                                                <button type="submit">THÊM VÀO GIỎ</button>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                    <!-- Product Form of the Page end -->
+                                </div>
+                                <!-- Detail Holder of the Page end -->
+                            </div>
+                        </div>
+                    </div>
+                </section><!-- Mt Product Detial of the Page end -->
+                <!-- related products start here -->
+                <div class="related-products wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <br>
+                                <h2>GỢI Ý CHO BẠN</h2>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <% relatedProducts.forEach((item)=>{ %>
+                                            <!-- mt product1 center start here -->
+                                            <div class="mt-product1 mt-paddingbottom20">
+                                                <div class="box">
+                                                    <div class="b1">
+                                                        <div class="b2">
+                                                            <a href="/products/<%=item.category.slug%>/<%=item._id%>"><img
+                                                                    src="<%=item.imagePaths[0]%>"
+                                                                    alt="image description" height="300" width="300"></a>
+                                                            <!-- <ul class="mt-stars">
+                                                        <li><i class="fa fa-star"></i></li>
+                                                        <li><i class="fa fa-star"></i></li>
+                                                        <li><i class="fa fa-star"></i></li>
+                                                        <li><i class="fa fa-star-o"></i></li>
+                                                    </ul> -->
+                                                            <!-- <ul class="links">
+                                                        <li><a href="#"><i class="icon-handbag"></i><span>Thêm vào giỏ</span></a></li>
+                                                        <li><a href="#"><i class="icomoon icon-heart-empty"></i></a>
+                                                        </li>
+                                                        <li><a href="#"><i class="icomoon icon-exchange"></i></a></li>
+                                                    </ul> -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="txt">
+                                                    <strong class="title"><a
+                                                            href="/products/<%=item.category.slug%>/<%=item._id%>">
+                                                            <%=item.title%>
+                                                        </a></strong>
+                                                    <span class="price">
+                                                        <!-- <i class="fa fa-eur"></i>  -->
+                                                        <%=item.price%> &#x20AB;
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <%})%>
+                                                <!-- mt product1 center end here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- related products end here -->
+                </div>
+            </main><!-- mt main end here -->
+            <!-- footer of the Page -->
+            <%- include ('footer.ejs') %>
+                <script>
+                    function zoom(e) {
+                        var zoomer = e.currentTarget;
+                        e.offsetX ? offsetX = e.offsetX : offsetX = e.touches[0].pageX
+                        e.offsetY ? offsetY = e.offsetY : offsetX = e.touches[0].pageX
+                        x = (offsetX / zoomer.offsetWidth) * 100
+                        y = (offsetY / zoomer.offsetHeight) * 100
+                        zoomer.style.backgroundPosition = x + "% " + y + "%";
+                    }
+                </script>
+                <%- include ('js.ejs') %>

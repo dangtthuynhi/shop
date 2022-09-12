@@ -1,0 +1,56 @@
+<%- include ('css.ejs') %>
+    <%- include ('header.ejs') %>
+        <%- include ('search.ejs') %>
+            <!-- footer of the Page -->
+            <div class="product-detail-tab wow fadeInUp" data-wow-delay="0.4s">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <ul class="mt-tabs text-center text-uppercase">
+                                <li><a href="#tab1" class="active">ACB</a></li>
+                                <li><a href="#tab2">MOMO</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div id="tab1">
+                                    <div class="container1">
+                                        <div class="image1">
+                                            <img src="/public/images/qr_acb.jpg">
+                                        </div>
+                                        <div class="text1">
+                                            <h1>Số tài khoản: 218137949</h1>
+                                            <h1>Tên chủ tài khoản: Cao The Danh</h1>
+                                            <h1>Tên ngân hàng: ACB</h1>
+                                            <h1>Tên chi nhánh: ACB - CN Dong Nai</h1>
+                                            <h1>Số tiền: <%=order.cart.totalCost%> &#x20AB;
+                                            </h1>
+                                            <h1>Nội dung chuyển khoản: <%=order._id%>
+                                            </h1>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="tab2">
+                                    <div class="container1">
+                                        <div class="image1">
+                                            <img src="/public/images/qr_momo.jpg">
+                                        </div>
+                                        <div class="text1">
+                                            <h1>Số điện thoại: 0918900010</h1>
+                                            <h1>Tên người nhận: Cao Thế Danh</h1>
+                                            <h1>Số tiền: <%=order.cart.totalCost%> &#x20AB;
+                                            </h1>
+                                            <h1>Nội dung chuyển khoản: <%=order._id%>
+                                            </h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <a href="/" class="process-btn-a">HOÀN THÀNH <i class="fa fa-check"></i></a>
+                    </div>
+                </div>
+            </div>
+            </div>
+            </main><!-- Main of the Page end here -->
+            <%- include ('footer.ejs') %>
+                <%- include ('js.ejs') %>

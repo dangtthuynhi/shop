@@ -1,0 +1,92 @@
+<%- include ('css.ejs') %>
+  <%- include ('header.ejs') %>
+    <!-- mt side menu end here -->
+    <!-- mt search popup start here -->
+    <%- include ('search.ejs') %>
+      <!-- mt search popup end here -->
+      <!-- Main of the Page -->
+      <main id="mt-main">
+        <!-- Mt Contact Banner of the Page -->
+        <section class="mt-contact-banner style4 wow fadeInUp" data-wow-delay="0.4s"
+          style="background-image: url(http://placehold.it/1920x205);">
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-12 text-center">
+                <h1>TIN TỨC</h1>
+                <!-- Breadcrumbs of the Page -->
+                <!-- <nav class="breadcrumbs">
+                  <ul class="list-unstyled">
+                    <li><a href="index.html">Home <i class="fa fa-angle-right"></i></a></li>
+                    <li><a href="#">Blog <i class="fa fa-angle-right"></i></a></li>
+                    <li>Category</li>
+                  </ul>
+                </nav> -->
+                <!-- Breadcrumbs of the Page end -->
+              </div>
+            </div>
+            <!-- <div class="row">
+              <div class="col-xs-12">
+                <a href="#" class="search">Search <i class="fa fa-search"></i></a>
+              </div>
+            </div> -->
+          </div>
+        </section>
+        <!-- Mt Contact Banner of the Page end -->
+
+        <!-- Mt Blog Detail of the Page -->
+        <div class="mt-blog-detail style2">
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 wow fadeInLeft" data-wow-delay="0.4s">
+                <% blogs.forEach((blog)=> { %>
+                  <!-- Blog Post of the Page -->
+                  <article class="blog-post">
+                    <div class="img-holder">
+                      <!-- <a href="blog-post-detail-sidebar.html"><img src="http://placehold.it/790x365" alt="image description"></a> -->
+                    </div>
+                    <!-- <time class="time" datetime="2016-02-03 20:00"><strong>25</strong>April</time> -->
+                    <div class="blog-txt">
+                      <h2><a href="/blogs/<%=blog.slug%>">
+                          <%=blog.title%>
+                        </a></h2>
+                      <ul class="list-unstyled blog-nav">
+                        <li> <a href="#"><i class="fa fa-clock-o"></i>
+                            <%=blog.createdAt%>
+                          </a></li>
+                        <!-- <li> <a href="#"><i class="fa fa-list"></i>Design</a></li>
+                      <li> <a href="#"><i class="fa fa-comment"></i>2 Comments</a></li> -->
+                      </ul>
+                      <p>
+                        <%=blog.quickDescription%>
+                      </p>
+                      <a href="/blogs/<%=blog.slug%>" class="btn-more">Đọc tiếp</a>
+                    </div>
+                  </article>
+                  <% }) %>
+                    <!-- Blog Post of the Page end -->
+                    <nav class="mt-pagination">
+                      <%- include ('pagination.ejs') %>
+                    </nav><!-- mt pagination end here -->
+              </div>
+              <div class="col-xs-12 col-sm-4 text-right wow fadeInRight" data-wow-delay="0.4s">
+                <!-- Category Widget of the Page -->
+                <section class="widget category-widget">
+                  <h3>DANH MỤC SẢN PHẨM</h3>
+                  <ul class="list-unstyled widget-nav">
+                    <% categories.forEach((category)=> { %>
+                      <li><a href="/products/<%=category.slug%>">
+                          <%=category.title%>
+                        </a></li>
+                      <% }) %>
+                  </ul>
+                </section>
+                <!-- Category Widget of the Page end -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Mt Blog Detail of the Page end -->
+      </main>
+      <!-- footer of the Page -->
+      <%- include ('footer.ejs') %>
+        <%- include ('js.ejs') %>

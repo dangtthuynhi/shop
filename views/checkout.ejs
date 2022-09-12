@@ -1,0 +1,139 @@
+<%- include ('css.ejs') %>
+  <%- include ('header.ejs') %>
+    <!-- mt search popup start here -->
+    <%- include ('search.ejs') %>
+      <!-- mt search popup end here -->
+      <!-- Main of the Page -->
+      <main id="mt-main">
+        <section class="mt-contact-banner mt-banner-22 wow fadeInUp" data-wow-delay="0.4s"
+          style="background-image: url(http://placehold.it/1920x325);">
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-12">
+                <h1 class="text-center">THANH TOÁN</h1>
+                <!-- Breadcrumbs of the Page -->
+                <!-- <nav class="breadcrumbs">
+                <ul class="list-unstyled">
+                  <li><a href="index.html">Home <i class="fa fa-angle-right"></i></a></li>
+                  <li>Thanh toán</li>
+                </ul>
+              </nav> -->
+                <!-- Breadcrumbs of the Page end -->
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Mt Process Section of the Page -->
+        <div class="mt-process-sec wow fadeInUp" data-wow-delay="0.4s">
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-12">
+                <!-- Process List of the Page -->
+                <ul class="list-unstyled process-list">
+                  <li class="active">
+                    <span class="counter">01</span>
+                    <strong class="title">Giỏ hàng</strong>
+                  </li>
+                  <li class="active">
+                    <span class="counter">02</span>
+                    <strong class="title">Thanh Toán</strong>
+                  </li>
+                  <li>
+                    <span class="counter">03</span>
+                    <strong class="title">Hoàn tất đơn hàng</strong>
+                  </li>
+                </ul>
+                <!-- Process List of the Page end -->
+              </div>
+            </div>
+          </div>
+        </div><!-- Mt Process Section of the Page end -->
+        <!-- Mt Detail Section of the Page -->
+        <section class="mt-detail-sec toppadding-zero wow fadeInUp" data-wow-delay="0.4s">
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-12 col-sm-6">
+                <h2>CHI TIẾT HÓA ĐƠN</h2>
+                <!-- Bill Detail of the Page -->
+                <form action="/checkout" class="bill-detail" method="POST">
+                  <fieldset>
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Họ và tên" name="name" required>
+                    </div>
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Tên công ty" name="companyName">
+                    </div>
+                    <div class="form-group">
+                      <textarea class="form-control" placeholder="Địa chỉ" name="address" required></textarea>
+                    </div>
+                    <div class="form-group">
+                      <div class="col">
+                        <input type="email" class="form-control" placeholder="Email" name="email">
+                      </div>
+                      <div class="col">
+                        <input type="tel" class="form-control" placeholder="Số điện thoại" name="phoneNumber" required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <textarea class="form-control" placeholder="Ghi chú" name="note"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label>Chọn phương thức thanh toán: </label>
+                      <select class="form-control" name="paymentMethod">
+                        <option value="cash">Tiền mặt</option>
+                        <option value="transfer">Chuyển khoản</option>
+                      </select>
+                    </div>
+                    <!-- Bill Detail of the Page end -->
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <div class="holder">
+                  <h2>ĐƠN HÀNG</h2>
+                  <ul class="list-unstyled block">
+                    <li>
+                      <div class="txt-holder">
+                        <div class="text-wrap pull-left">
+                          <strong class="title">SẢN PHẨM</strong>
+                          <% products.forEach((product)=>{ %>
+                            <span>
+                              <%=product.title%> x<%=product.qty%>
+                            </span>
+                            <% }) %>
+                        </div>
+                        <div class="text-wrap txt text-right pull-right">
+                          <strong class="title">TỔNG</strong>
+                          <% products.forEach((product)=>{ %>
+                            <span>
+                              <%= product.totalPrice %> &#x20AB;
+                            </span>
+                            <% }) %>
+                        </div>
+                      </div>
+                    </li>
+                    <li style="border-bottom: none;">
+                      <div class="txt-holder">
+                        <strong class="title sub-title pull-left">TỔNG ĐƠN HÀNG</strong>
+                        <div class="txt pull-right">
+                          <span>
+                            <%= cart.totalCost %> &#x20AB;
+                          </span>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                  <!-- Panel Group of the Page end -->
+                </div>
+                <br>
+                <button class="process-btn" type="submit">XÁC NHẬN <i class="fa fa-check"></i></button>
+                <!-- <a href="#" class="process-btn">XÁC NHẬN  <i class="fa fa-check"></i></a> -->
+              </div>
+            </div>
+          </div>
+          </fieldset>
+          </form>
+        </section>
+        <!-- Mt Detail Section of the Page end -->
+      </main><!-- Main of the Page end here -->
+      <!-- footer of the Page -->
+      <%- include ('footer.ejs') %>
+        <%- include ('js.ejs') %>

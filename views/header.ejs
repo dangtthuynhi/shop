@@ -1,0 +1,79 @@
+</head>
+
+<body>
+	<!-- main container of all the page elements -->
+	<div id="wrapper">
+		<!-- Page Loader -->
+		<div id="pre-loader" class="loader-container">
+			<div class="loader">
+				<img src="/public/images/svg/rings.svg" alt="loader">
+			</div>
+		</div>
+		<!-- W1 start here -->
+		<div class="w1">
+			<!-- mt header style4 start here -->
+			<header id="mt-header" class="style4">
+				<!-- mt bottom bar start here -->
+				<div class="mt-bottom-bar">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- mt logo start here -->
+								<div class="mt-logo"><a href="/"><img src="/public/images/logo.png" alt="schon"></a>
+								</div>
+								<!-- mt icon list start here -->
+								<ul class="mt-icon-list">
+									<li class="hidden-lg hidden-md">
+										<a href="#" class="bar-opener mobile-toggle">
+											<span class="bar"></span>
+											<span class="bar small"></span>
+											<span class="bar"></span>
+										</a>
+									</li>
+									<li><a href="#" class="icon-magnifier"></a></li>
+									<li>
+										<a href="/shopping-cart" class="cart-opener">
+											<span class="icon-handbag"></span>
+											<% if(session.cart) { %>
+												<span class="num">
+													<%= session.cart.totalQty %>
+												</span>
+												<% } else { %>
+													<span class="num">0</span>
+													<% } %>
+										</a>
+									</li>
+									<!-- <li>
+										<a href="#" class="bar-opener side-opener">
+											<span class="bar"></span>
+											<span class="bar small"></span>
+											<span class="bar"></span>
+										</a>
+									</li> -->
+								</ul><!-- mt icon list end here -->
+								<!-- navigation start here -->
+								<nav id="nav">
+									<ul>
+										<li>
+											<a href="/products">SẢN PHẨM </a>
+											<!-- mt dropmenu start here -->
+										</li>
+										<li>
+											<a href="/pages/about-us">GIỚI THIỆU </a>
+										</li>
+										<li>
+											<a href="/pages/contact-us">LIÊN HỆ </a>
+										</li>
+										<li>
+											<a href="/blogs">TIN TỨC </a>
+										</li>
+									</ul>
+								</nav>
+								<!-- mt icon list end here -->
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- mt bottom bar end here -->
+				<span class="mt-side-over"></span>
+			</header><!-- mt header style4 end here -->

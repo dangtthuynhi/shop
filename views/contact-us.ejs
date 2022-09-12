@@ -1,0 +1,64 @@
+<%- include ('css.ejs') %>
+  <%- include ('header.ejs') %>
+    <!-- mt side menu end here -->
+    <!-- mt search popup start here -->
+    <%- include ('search.ejs') %>
+      <!-- mt search popup end here -->
+      <!-- Main of the Page -->
+      <main id="mt-main">
+        <!-- Mt Contact Detail of the Page -->
+        <div class="mt-contact-detail wow fadeInUp" data-wow-delay="0.4s">
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-12 col-sm-4 mt-paddingbottomxs text-center">
+                <span class="icon"><i class="fa fa-map-marker"></i></span>
+                <strong class="title">ĐỊA CHỈ</strong>
+                <address>175/25A, Hoàng Minh Chánh, An Hòa, Hóa An <br>Biên Hòa</address>
+              </div>
+              <div class="col-xs-12 col-sm-4 mt-paddingbottomxs text-center">
+                <span class="icon"><i class="fa fa-phone"></i></span>
+                <strong class="title">ĐIỆN THOẠI</strong>
+                <a href="tel:+84918900010">0918900010</a>
+              </div>
+              <div class="col-xs-12 col-sm-4 mt-paddingbottomxs text-center">
+                <span class="icon"><i class="fa fa-envelope-o"></i></span>
+                <strong class="title">EMAIL</strong>
+                <a href="mailto:danhterrazzo@gmail.com">danhterrazzo@gmail.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Mt Contact Detail of the Page end -->
+        <!-- Mt Form Section of the Page -->
+        <section class="mt-form-sec wow fadeInUp" data-wow-delay="0.4s">
+          <div class="container">
+            <div class="row">
+              <header class="col-xs-12 text-center header">
+                <h2>Liên hệ với Thế giới chậu</h2>
+                <p> Thế giới chậu luôn sẵn sàng lắng nghe câu hỏi và ý kiến đóng góp từ bạn. <br>Chúng tôi sẽ phản hồi
+                  ngay trong 24h tiếp theo!</p>
+              </header>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <!-- Contact Form of the Page -->
+                <form action="/add-contact" class="contact-form" method="POST">
+                  <fieldset>
+                    <input type="text" class="form-control" placeholder="Tên" name="name">
+                    <input type="text" class="form-control" placeholder="Số điện thoại" name="phone">
+                    <input type="email" class="form-control" placeholder="E-Mail" name="email">
+                    <input type="text" class="form-control" placeholder="Chủ đề" name="subject">
+                    <textarea class="form-control" placeholder="Nội dung" name="message"></textarea>
+                    <!-- <input type="hidden" name="_csrf" value="{{csrfToken}}"> -->
+                    <button class="btn-type3" type="submit">Gửi </button>
+                  </fieldset>
+                </form>
+                <!-- Contact Form of the Page end -->
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Mt Form Section of the Page -->
+      </main>
+      <%- include ('footer.ejs') %>
+        <%- include ('js.ejs') %>
