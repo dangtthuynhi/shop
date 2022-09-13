@@ -14,62 +14,15 @@
                             <div class="col-xs-12">
                                 <!-- Slider of the Page -->
                                 <div class="slider">
-                                    <!-- Comment List of the Page -->
-                                    <!-- <ul class="list-unstyled comment-list">
-                                <li><a href="#"><i class="fa fa-heart"></i>27</a></li>
-                                <li><a href="#"><i class="fa fa-comments"></i>12</a></li>
-                                <li><a href="#"><i class="fa fa-share-alt"></i>14</a></li>
-                            </ul> -->
-                                    <!-- Comment List of the Page end -->
-                                    <!-- Product Slider of the Page -->
-                                    <!-- <div class="product-slider">
-                                        <div class="slide">
-                                            <img src="<%=product.imagePaths[0]%>" alt="image descrption">
-                                        </div>
-                                    </div> -->
-                                    <figure class="zoom" style="background:url(<%=product.imagePaths[0]%>)"
+                                    <figure class="zoom" style="background:url(<%=product.imagePath%>)"
                                         onmousemove="zoom(event)" ontouchmove="zoom(event)">
-                                        <img src="<%=product.imagePaths[0]%>" />
+                                        <img src="<%=product.imagePath%>" />
                                     </figure>
-                                    <ul class="list-unstyled slick-slider pagg-slider">
-                                        <%product.imagePaths.forEach((image)=>{%>
-                                            <li>
-                                                <div class="img"><img src="<%=image%>" alt="image description">
-                                                </div>
-                                            </li>
-                                            <%})%>
-                                    </ul>
                                 </div>
-                                <!-- Product Slider of the Page end -->
-                                <!-- Pagg Slider of the Page -->
-                                <!-- <ul class="list-unstyled slick-slider pagg-slider">
-                                        <%product.imagePaths.forEach((image)=>{%>
-                                            <li>
-                                                <div class="img"><img src="<%=image%>" alt="image description">
-                                                </div>
-                                            </li>
-                                            <%})%>
-                                    </ul> -->
-                                <!-- Pagg Slider of the Page end -->
-                                <!-- </div> -->
-                                <!-- Slider of the Page end -->
-                                <!-- Detail Holder of the Page -->
                                 <div class="detial-holder">
-                                    <!-- Breadcrumbs of the Page -->
-                                    <!-- <ul class="list-unstyled breadcrumbs">
-                                <li><a href="#">Chairs <i class="fa fa-angle-right"></i></a></li>
-                                <li>Products</li>
-                            </ul> -->
-                                    <!-- Breadcrumbs of the Page end -->
                                     <h2>
                                         <%=product.title%>
                                     </h2>
-                                    <!-- Rank Rating of the Page -->
-                                    <!-- Rank Rating of the Page end -->
-                                    <!-- <ul class="list-unstyled list">
-                                        <li><a href="https://www.facebook.com/sharer/sharer.php?u=example.org"
-                                                target="_blank"><i class="fa fa-share-alt"></i></a></li>
-                                    </ul> -->
                                     <div class="txt-wrap">
                                         <%-product.description%>
                                     </div>
@@ -114,7 +67,7 @@
                                                     <div class="b1">
                                                         <div class="b2">
                                                             <a href="/products/<%=item.category.slug%>/<%=item._id%>"><img
-                                                                    src="<%=item.imagePaths[0]%>"
+                                                                    src="<%=item.imagePath%>"
                                                                     alt="image description" height="300" width="300"></a>
                                                             <!-- <ul class="mt-stars">
                                                         <li><i class="fa fa-star"></i></li>

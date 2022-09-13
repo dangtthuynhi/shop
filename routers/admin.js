@@ -31,7 +31,7 @@ const adminBro = new AdminBro({
         //   icon: "InventoryManagement",
         // },
         properties: {
-          size:{
+          sizes: {
             isVisible: { list: false, filter: true, show: true, edit: true },
           },
           description: {
@@ -47,7 +47,7 @@ const adminBro = new AdminBro({
           price: {
             type: "number",
           },
-          imagePaths: {
+          imagePath: {
             isVisible: { list: false, filter: false, show: true, edit: true },
           },
         },
