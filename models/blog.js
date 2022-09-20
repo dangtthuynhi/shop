@@ -17,7 +17,8 @@ const blogSchema = Schema({
   },
   createdAt: {
     type: String,
-    default: date.format(now,'DD/MM/YYYY HH:mm:ss'),
+    default: new Date(),
+    get: convertDate,
   },
   slug: {
     type: String,
@@ -25,5 +26,9 @@ const blogSchema = Schema({
     slug: "title",
   },
 });
+
+function convertDate(createdAt) {
+  createdAt.format(now,'DD/MM/YYYY HH:mm:ss');
+}
 
 module.exports = mongoose.model("Blog", blogSchema);

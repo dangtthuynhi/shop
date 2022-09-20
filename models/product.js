@@ -38,7 +38,7 @@ const productSchema = Schema({
   },
   createdAt: {
     type: Date,
-    default: Date.now(),
+    default: new Date(),
   },
 });
 function convertImagePath(imagePath) {

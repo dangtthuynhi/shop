@@ -10,7 +10,7 @@ const Contact = require("../models/contact");
 const middleware = require("../middleware");
 const router = express.Router();
 var mailgun = require('mailgun-js')
-  ({ apiKey: process.env.API_KEY, domain: process.env.DOMAIN });
+  ({ apiKey: '', domain: process.env.DOMAIN });
 
 // const csrfProtection = csrf();
 // router.use(csrfProtection);
