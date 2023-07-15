@@ -1,4 +1,5 @@
 const express = require("express");
+
 //const csrf = require("csurf");
 const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY);
 const Product = require("../models/product");
@@ -10,7 +11,11 @@ const Contact = require("../models/contact");
 const middleware = require("../middleware");
 const router = express.Router();
 var mailgun = require('mailgun-js')
-  ({ apiKey: '', domain: process.env.DOMAIN });
+  ({ apiKey: 'key-d38db44c45b19a623f8a980e1027c770', domain: process.env.DOMAIN });
+const {
+  userContactUsValidationRules,
+  validateContactUs,
+} = require("../configs/validator");
 
 // const csrfProtection = csrf();
 // router.use(csrfProtection);
@@ -25,7 +30,9 @@ router.get("/", async (req, res) => {
     const banners = await Banner.find({})
       .limit(3);
 
-    res.render("index", { pageName: "Trang chủ", products, banners });
+    const categories = await Category.find({});
+
+    res.render("index", { pageName: "Trang chủ", products, banners, categories});
   } catch (error) {
     console.log(error);
     res.redirect("/");
@@ -33,8 +40,9 @@ router.get("/", async (req, res) => {
 });
 // GET: add a product to the shopping cart when "Add to cart" button is pressed
 
-router.get("/add-to-cart/:id", async (req, res) => {
-  const productId = req.params.id;
+router.post("/add-to-cart", async (req, res) => {
+  console.log(req.body.productId);
+  const productId = req.body.productId;
   var qty = parseInt(req.query.qty == null ? 1 : req.query.qty);
   try {
     // get the correct cart, either from the db, session, or an empty cart.
@@ -46,7 +54,7 @@ router.get("/add-to-cart/:id", async (req, res) => {
     }
 
     // add the product to the cart
-    const product = await Product.findById(productId);
+    const product = await Product.findOne({ 'productCode': productId }).populate("category");
     const itemIndex = cart.items.findIndex((p) => p.productId == productId);
     if (itemIndex > -1) {
       // if product exists in the cart, update the quantity
@@ -68,6 +76,7 @@ router.get("/add-to-cart/:id", async (req, res) => {
 
     }
     req.session.cart = cart;
+    console.log(req.session.cart);
     req.flash("success", "Item added to the shopping cart");
     res.redirect(req.headers.referer);
   } catch (err) {
@@ -216,7 +225,7 @@ router.post("/checkout", async (req, res) => {
         console.log(err);
         return res.redirect("/checkout");
       }
-      var body =  `<div>
+      var body = `<div>
       <h2 style="color: #478ba2; text-align:center;">Đơn hàng: ${newOrder._id}</h2>
       <h3 style="color: #478ba2;">Số điện thoại: ${newOrder.phoneNumber}<h3>
       </div>
@@ -270,7 +279,7 @@ router.post("/add-contact", async (req, res) => {
         console.log(err);
         return res.redirect("/pages/contact-us");
       }
-      var body =  `<div>
+      var body = `<div>
       <h2 style="color: #478ba2; text-align:center;">Tên khách hàng: ${req.body.name}</h2>
       <h3 style="color: #478ba2;">Email: (${req.body.email})<h3>
       </div>
@@ -326,5 +335,79 @@ sendMail = function (sender_email, receiver_email,
     else console.log(body);
   });
 }
+
+//GET: display abous us page
+router.get("/about-us", (req, res) => {
+  res.render("about-us", {
+    pageName: "Giới thiệu",
+  });
+});
+
+//GET: display contact us page and form with csrf tokens
+router.get("/contact-us", (req, res) => {
+  const successMsg = req.flash("success")[0];
+  const errorMsg = req.flash("error");
+  res.render("contact-us", {
+    pageName: "Liên hệ",
+    successMsg,
+    errorMsg,
+  });
+});
+
+//POST: handle contact us form logic using nodemailer
+router.post(
+  "/contact-us",
+  [userContactUsValidationRules(), validateContactUs],
+  (req, res) => {
+    // instantiate the SMTP server
+    const smtpTrans = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false,
+      auth: {
+        // company's email and password
+        user: process.env.GMAIL_EMAIL,
+        pass: process.env.GMAIL_PASSWORD,
+      },
+      tls: {
+        rejectUnauthorized: false,
+      },
+    });
+
+    // email options
+    const mailOpts = {
+      from: req.body.email,
+      to: process.env.GMAIL_EMAIL,
+      subject: `Enquiry from ${req.body.name}`,
+      html: `
+      <div>
+      <h2 style="color: #478ba2; text-align:center;">Client's name: ${req.body.name}</h2>
+      <h3 style="color: #478ba2;">Client's email: (${req.body.email})<h3>
+      </div>
+      <h3 style="color: #478ba2;">Client's message: </h3>
+      <div style="font-size: 30;">
+      ${req.body.message}
+      </div>
+      `,
+    };
+
+    // send the email
+    smtpTrans.sendMail(mailOpts, (error, response) => {
+      if (error) {
+        req.flash(
+          "error",
+          "An error occured... Please check your internet connection and try again later"
+        );
+        return res.redirect("/pages/contact-us");
+      } else {
+        req.flash(
+          "success",
+          "Email sent successfully! Thanks for your inquiry."
+        );
+        return res.redirect("/pages/contact-us");
+      }
+    });
+  }
+);
 
 module.exports = router;

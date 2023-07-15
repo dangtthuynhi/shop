@@ -11,8 +11,17 @@ const flash = require("connect-flash");
 const Category = require("./models/category");
 var MongoStore = require("connect-mongo")(session);
 const connectDB = require("./configs/db");
+const AdminJS = require('adminjs')
+const AdminJSExpress = require('@adminjs/express')
 
+const bodyParser = require('body-parser');
 const app = express();
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
 require("./configs/passport");
 const formData = require('form-data');
 // mongodb configuration
@@ -20,9 +29,10 @@ connectDB();
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-app.use("/public",express.static((__dirname+'/public')));
-app.use("/",express.static((__dirname+'/')));
-// admin route
+app.use("/public", express.static((__dirname + '/public')));
+app.use("/", express.static((__dirname + '/')));
+
+// admin router
 const adminRouter = require("./routers/admin");
 app.use("/admin", adminRouter);
 
@@ -86,10 +96,8 @@ app.use(function (req, res, next) {
 const indexRouter = require("./routers/index");
 const productsRouter = require("./routers/products");
 const blogsRouter = require("./routers/blogs");
-const pagesRouter = require("./routers/pages");
- app.use("/products", productsRouter);
- app.use("/blogs", blogsRouter);
-app.use("/pages", pagesRouter);
+app.use("/products", productsRouter);
+app.use("/blogs", blogsRouter);
 app.use("/", indexRouter);
 
 // catch 404 and forward to error handler

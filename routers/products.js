@@ -8,7 +8,7 @@ var moment = require("moment");
 router.get("/", async (req, res) => {
   const successMsg = req.flash("success")[0];
   const errorMsg = req.flash("error")[0];
-  const perPage = 8;
+  const perPage = 9;
   let page = parseInt(req.query.page) || 1;
   try {
     const products = await Product.find({})
@@ -38,7 +38,7 @@ router.get("/", async (req, res) => {
 router.get("/by_price_desc", async (req, res) => {
   const successMsg = req.flash("success")[0];
   const errorMsg = req.flash("error")[0];
-  const perPage = 8;
+  const perPage = 9;
   let page = parseInt(req.query.page) || 1;
   try {
     const products = await Product.find({})
@@ -68,7 +68,7 @@ router.get("/by_price_desc", async (req, res) => {
 router.get("/by_price_asc", async (req, res) => {
   const successMsg = req.flash("success")[0];
   const errorMsg = req.flash("error")[0];
-  const perPage = 8;
+  const perPage = 9;
   let page = parseInt(req.query.page) || 1;
   try {
     const products = await Product.find({})
@@ -98,7 +98,7 @@ router.get("/by_price_asc", async (req, res) => {
 router.get("/by_time_desc", async (req, res) => {
   const successMsg = req.flash("success")[0];
   const errorMsg = req.flash("error")[0];
-  const perPage = 8;
+  const perPage = 9;
   let page = parseInt(req.query.page) || 1;
   try {
     const products = await Product.find({})
@@ -127,7 +127,7 @@ router.get("/by_time_desc", async (req, res) => {
 
 // GET: search box
 router.get("/search", async (req, res) => {
-  const perPage = 8;
+  const perPage = 9;
   let page = parseInt(req.query.page) || 1;
   const successMsg = req.flash("success")[0];
   const errorMsg = req.flash("error")[0];
@@ -164,7 +164,7 @@ router.get("/search", async (req, res) => {
 router.get("/:slug", async (req, res) => {
   const successMsg = req.flash("success")[0];
   const errorMsg = req.flash("error")[0];
-  const perPage = 8;
+  const perPage = 9;
   let page = parseInt(req.query.page) || 1;
   try {
     const foundCategory = await Category.findOne({ slug: req.params.slug });
@@ -194,17 +194,17 @@ router.get("/:slug", async (req, res) => {
 });
 
 // GET: display a certain product by its id
-router.get("/:slug/:id", async (req, res) => {
+router.get("/:slug/:productCode", async (req, res) => {
   const successMsg = req.flash("success")[0];
   const errorMsg = req.flash("error")[0];
   try {
-    const product = await Product.findById(req.params.id).populate("category");
+    const product = await Product.findOne({ 'productCode': req.params.productCode }).populate("category");
     const foundCategory = await Category.findOne({ slug: req.params.slug });
     const relatedProducts = await Product.find({ category: foundCategory.id })
       .sort("-createdAt")
-      .limit(5)
+      .limit(10)
       .populate("category");
-
+    console.log(`${product} saved successfully`);
     res.render("product-detail", {
       pageName: product.title,
       product,

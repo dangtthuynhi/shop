@@ -1,139 +1,810 @@
-<%- include ('css.ejs') %>
-	<%- include ('header.ejs') %>
-		<!-- mt side menu start here -->
-		<!-- mt search popup start here -->
-		<%- include ('search.ejs') %>
-			<!-- mt search popup end here -->
-			<!-- mt main slider start here -->
-			<div class="mt-main-slider">
-				<!-- slider banner-slider start here -->
-				<div class="slider banner-slider">
-					<!-- holder start here -->
-					<div class="holder text-center" style="background-image: url(<%=banners[0].imagePath%>);">
-						<div class="container">
-							<div class="row">
-								<div class="col-xs-12">
-									<div class="text centerize">
-										<!-- <strong class="title">SẢN PHẨM HIỆN ĐẠI</strong> -->
-										<h1>SẢN PHẨM</h1>
-										<h2>SIÊU NHẸ</h2>
-										<div class="txt">
-											<!-- <p>Chỉ 12kg/1m
-										</p> -->
-										</div>
-										<a href="/products" class="shop">Xem ngay</a>
-									</div>
+<%- include ('header.ejs') %>
+	<main class="main">
+		<div class="container">
+			<div class="home-slider-container">
+				<div class="home-slider owl-carousel owl-theme owl-theme-light nav-outer show-nav-hover slide-animate"
+					data-owl-options="{
+                    'navText': [ '<i class=icon-left-open-big>', '<i class=icon-right-open-big>' ]
+                    }">
+					<div class="home-slide">
+						<figure style="background-color: #d7b697;">
+							<img class="slide-bg" src="/public/assets/images/demoes/demo8/slider/slide-1.jpg" width="1180"
+								height="569" alt="Home Banner" />
+						</figure>
+						<!-- End .slide-bg -->
+						<div class="home-slide-content sale-banner">
+							<div class="row no-gutter bg-primary appear-animate"
+								data-animation-name="fadeInLeftShorter">
+								<div class="col-auto col-md-6 d-flex flex-column justify-content-center col-1">
+									<h4 class="align-left text-uppercase mb-0 appear-animate"
+										data-animation-name="slideInRight" data-animation-delay="400">Furniture
+										&amp; Garden</h4>
+									<h3 class="text-white mb-0 align-left text-uppercase appear-animate"
+										data-animation-name="slideInRight" data-animation-delay="400">Huge Sale
+									</h3>
 								</div>
-							</div>
-						</div>
-					</div>
-					<!-- holder end here -->
 
-					<!-- holder start here -->
-					<div class="holder text-center" style="background-image: url(<%=banners[1].imagePath%>);">
-						<div class="container">
-							<div class="row">
-								<div class="col-xs-12">
-									<div class="text right">
-										<!-- <strong class="title">FURNITURE DESIGNS IDEAS</strong> -->
-										<h1>THIẾT KẾ</h1>
-										<h2>TỐI GIẢN</h2>
-										<!-- <div class="txt">
-										<p>Consectetur adipisicing elit. Beatae accusamus, optio, repellendus inventore
-										</p>
-									</div> -->
-										<a href="/products" class="shop">XEM NGAY</a>
-									</div>
+								<div class="col-auto col-md-6 col-2 appear-animate" data-animation-name="slideInLeft"
+									data-animation-delay="400">
+									<h2 class="text-white mb-0 position-relative align-left">
+										50<small>%<ins>OFF</ins></small>
+									</h2>
 								</div>
+							</div>
+							<div class="mb-0 text-right">
+								<a href="demo8-shop.html" class="btn btn-lg btn-dark appear-animate"
+									data-animation-name="fadeInUpShorter" data-animation-delay="600">Shop
+									Now!</a>
 							</div>
 						</div>
 					</div>
-					<!-- holder end here -->
+					<!-- End .home-slide -->
 
-					<!-- holder start here -->
-					<div class="holder text-center" style="background-image: url(<%=banners[2].imagePath%>);">
-						<div class="container">
-							<div class="row">
-								<div class="col-xs-12">
-									<div class="text">
-										<!-- <strong class="title">FURNITURE DESIGNS IDEAS</strong> -->
-										<h1>THIẾT KẾ</h1>
-										<h2>ĐỘC ĐÁO</h2>
-										<!-- <div class="txt">
-										<p>Consectetur adipisicing elit. Beatae accusamus, optio, repellendus inventore
-										</p>
-									</div> -->
-										<a href="/products" class="shop">XEM NGAY</a>
-									</div>
+					<div class="home-slide home-slide-left">
+						<figure style="background-color: #ceb49d;">
+							<img class="slide-bg" src="/public/assets/images/demoes/demo8/slider/slide-2.jpg" width="1180"
+								height="569" alt="Home Banner" />
+						</figure>
+						<!-- End .slide-bg -->
+						<div class="home-slide-content slide-content-dark sale-banner">
+							<div class="row no-gutter bg-secondary appear-animate"
+								data-animation-name="fadeInRightShorter">
+								<div class="col-auto col-md-6 d-flex flex-column justify-content-center col-1">
+									<h4 class="align-left text-uppercase mb-0 appear-animate"
+										data-animation-name="slideInRight" data-animation-delay="300">Home office
+										sale
+									</h4>
+									<h3 class="text-white mb-0 align-left text-uppercase appear-animate"
+										data-animation-name="slideInRight" data-animation-delay="300">mega off
+									</h3>
+								</div>
+
+								<div class="col-auto col-md-6 col-2 appear-animate" data-animation-name="slideInLeft"
+									data-animation-delay="300">
+									<h2 class="text-white mb-0 position-relative align-left">
+										50<small>%<ins>OFF</ins></small>
+									</h2>
 								</div>
 							</div>
-						</div>
-					</div>
-					<!-- holder end here -->
-				</div>
-				<!-- slider regular end here -->
-			</div><!-- mt main slider end here -->
-			<!-- mt main start here -->
-			<main id="mt-main">
-				<!-- mt bestseller start here -->
-				<div class="mt-bestseller bg-grey text-center wow fadeInUp" data-wow-delay="0.4s">
-					<div class="container">
-						<div class="row">
-							<div class="col-xs-12 mt-heading text-uppercase">
-								<h2 class="heading">SẢN PHẨM MỚI</h2>
-								<!-- <p>EXCEPTEUR SINT OCCAECAT</p> -->
+							<div class="mb-0">
+								<a href="demo8-shop.html" class="btn btn-lg btn-primary appear-animate"
+									data-animation-name="fadeInUpShorter" data-animation-delay="600">Shop
+									Now!</a>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-xs-12">
-								<div class="bestseller-slider">
-									<% for(let i=0; i<products.length; i++) { %>
-										<div class="slide">
-											<!-- mt product1 center start here -->
-											<div class="mt-product1 large">
-												<div class="box">
-													<div class="b1">
-														<div class="b2">
-															<a
-																href="/products/<%=products[i].category.slug%>/<%=products[i]._id%>"><img
-																	src="<%= products[i].imagePath %>"
-																	alt="<%= products[i].title %>" height="300" width="300"></a>
-															<span class="caption">
-																<span class="best-price">Giá tốt</span>
-															</span>
-															<ul class="links add">
-																<li><a href="/add-to-cart/<%=products[i]._id%>"><i
-																			class="icon-handbag"></i></a></li>
-																<!-- <li><a href="#"><i class="icomoon icon-heart-empty"></i></a>
-															</li>
-															<li><a href="#"><i class="icomoon icon-exchange"></i></a>
-															</li> -->
-															</ul>
-														</div>
-													</div>
-												</div>
-												<div class="txt">
-													<strong class="title"><a
-															href="/products/<%=products[i].category.slug%>/<%=products[i]._id%>">
-															<%= products[i].title %>
-														</a></strong>
-													<span class="price">
-														<!-- <i class="fa fa-eur"></i>  -->
-														<span>
-															<%= products[i].price %> &#x20AB;
-														</span>
-													</span>
-												</div>
-											</div><!-- mt product1 center end here -->
-										</div>
-										<% } %>
+						<!-- End .home-slide-content -->
+					</div>
+					<!-- End .home-slide -->
+				</div>
+				<!-- End .home-slider -->
+			</div>
+			<!-- End .home-slider-container -->
+		</div>
+		<!-- End .container -->
+
+		<div class="mb-3"></div>
+		<!-- margin -->
+
+		<div class="container feature-container">
+			<h2 class="subtitle text-center">FEATURED PRODUCTS</h2>
+			<div class="heading-spacer"></div>
+			<div class="row">
+				<div class="col-6 col-sm-4 col-md-3 appear-animate" data-animation-delay="100"
+					data-animation-duration="1500">
+					<div class="product-default inner-quickview inner-icon">
+						<figure>
+							<a href="demo8-product.html">
+								<img src="/public/assets/images/demoes/demo8/products/product-2.jpg" alt="product" width="300"
+									height="300" />
+								<img src="/public/assets/images/demoes/demo8/products/product-8.jpg" alt="product" width="300"
+									height="300" />
+							</a>
+							<div class="btn-icon-group">
+								<a href="#" class="btn-icon btn-add-cart product-type-simple"><i
+										class="icon-shopping-cart"></i></a>
+							</div>
+							<a href="/public/ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick
+								View</a>
+						</figure>
+						<div class="product-details">
+							<div class="category-wrap">
+								<div class="category-list">
+									<a href="demo8-shop.html" class="product-category">Electronics</a>,
+									<a href="demo8-shop.html" class="product-category">Fashion</a>,
+									<a href="demo8-shop.html" class="product-category">watches</a>
 								</div>
+								<a href="wishlist.html" title="Wishlist" class="btn-icon-wish"><i
+										class="icon-heart"></i></a>
 							</div>
+							<h3 class="product-title">
+								<a href="demo8-product.html">Porto Brown Chair</a>
+							</h3>
+							<div class="ratings-container">
+								<div class="product-ratings">
+									<span class="ratings" style="width:0%"></span>
+									<!-- End .ratings -->
+									<span class="tooltiptext tooltip-top"></span>
+								</div>
+								<!-- End .product-ratings -->
+							</div>
+							<!-- End .product-container -->
+							<div class="price-box">
+								<span class="product-price">$101.00 – $111.00</span>
+							</div>
+							<!-- End .price-box -->
 						</div>
+						<!-- End .product-details -->
 					</div>
 				</div>
-				<!-- mt bestseller start here -->
-			</main><!-- mt main end here -->
-			<!-- footer of the Page -->
-			<%- include ('footer.ejs') %>
-				<%- include ('js.ejs') %>
+				<div class="col-6 col-sm-4 col-md-3 appear-animate" data-animation-delay="100"
+					data-animation-duration="1500">
+					<div class="product-default inner-quickview inner-icon">
+						<figure>
+							<a href="/products">
+								<img src="/public/assets/images/demoes/demo8/products/product-21.jpg" alt="product" width="300"
+									height="300" />
+								<img src="/public/assets/images/demoes/demo8/products/product-12.jpg" alt="product" width="300"
+									height="300" />
+							</a>
+							<div class="btn-icon-group">
+								<a href="demo8-product.html" class="btn-icon btn-add-cart"><i
+										class="fa fa-arrow-right"></i>
+								</a>
+							</div>
+							<a href="/public/ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick
+								View</a>
+						</figure>
+						<div class="product-details">
+							<div class="category-wrap">
+								<div class="category-list">
+									<a href="demo8-shop.html" class="product-category">Fashion</a>,
+									<a href="demo8-shop.html" class="product-category">Shoes</a>,
+									<a href="demo8-shop.html" class="product-category">Toys</a>
+								</div>
+								<a href="wishlist.html" title="Wishlist" class="btn-icon-wish"><i
+										class="icon-heart"></i></a>
+							</div>
+							<h3 class="product-title">
+								<a href="demo8-product.html">Porto Both Sticky Info</a>
+							</h3>
+							<div class="ratings-container">
+								<div class="product-ratings">
+									<span class="ratings" style="width:80%"></span>
+									<!-- End .ratings -->
+									<span class="tooltiptext tooltip-top"></span>
+								</div>
+								<!-- End .product-ratings -->
+							</div>
+							<!-- End .product-container -->
+							<div class="price-box">
+								<span class="product-price">$39.00 – $108.00</span>
+							</div>
+							<!-- End .price-box -->
+						</div>
+						<!-- End .product-details -->
+					</div>
+				</div>
+				<div class="col-6 col-sm-4 col-md-3 appear-animate" data-animation-delay="100"
+					data-animation-duration="1500">
+					<div class="product-default inner-quickview inner-icon">
+						<figure>
+							<a href="demo8-product.html">
+								<img src="/public/assets/images/demoes/demo8/products/product-9.jpg" alt="product" width="300"
+									height="300" />
+								<img src="/public/assets/images/demoes/demo8/products/product-13.jpg" alt="product" width="300"
+									height="300" />
+							</a>
+							<div class="btn-icon-group">
+								<a href="#" class="btn-icon btn-add-cart product-type-simple"><i
+										class="icon-shopping-cart"></i></a>
+							</div>
+							<a href="/public/ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick
+								View</a>
+						</figure>
+						<div class="product-details">
+							<div class="category-wrap">
+								<div class="category-list">
+									<a href="demo8-shop.html" class="product-category">T-shirts</a>,
+									<a href="demo8-shop.html" class="product-category">Toys</a>,
+									<a href="demo8-shop.html" class="product-category">Trousers</a>
+								</div>
+								<a href="wishlist.html" title="Wishlist" class="btn-icon-wish"><i
+										class="icon-heart"></i></a>
+							</div>
+							<h3 class="product-title">
+								<a href="demo8-product.html">Porto Sports Shoes</a>
+							</h3>
+							<div class="ratings-container">
+								<div class="product-ratings">
+									<span class="ratings" style="width:0%"></span>
+									<!-- End .ratings -->
+									<span class="tooltiptext tooltip-top"></span>
+								</div>
+								<!-- End .product-ratings -->
+							</div>
+							<!-- End .product-container -->
+							<div class="price-box">
+								<span class="product-price">$101.00 – $111.00</span>
+							</div>
+							<!-- End .price-box -->
+						</div>
+						<!-- End .product-details -->
+					</div>
+				</div>
+				<div class="col-6 col-sm-4 col-md-3 appear-animate" data-animation-delay="100"
+					data-animation-duration="1500">
+					<div class="product-default inner-quickview inner-icon">
+						<figure>
+							<a href="demo8-product.html">
+								<img src="/public/assets/images/demoes/demo8/products/product-10.jpg" alt="product" width="300"
+									height="300" />
+								<img src="/public/assets/images/demoes/demo8/products/product-14.jpg" alt="product" width="300"
+									height="300" />
+							</a>
+							<div class="label-group">
+								<span class="product-label label-sale">-23%</span>
+							</div>
+							<div class="btn-icon-group">
+								<a href="demo8-product.html" class="btn-icon btn-add-cart"><i
+										class="fa fa-arrow-right"></i>
+								</a>
+							</div>
+							<a href="/public/ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick
+								View</a>
+						</figure>
+						<div class="product-details">
+							<div class="category-wrap">
+								<div class="category-list">
+									<a href="demo8-shop.html" class="product-category">Fashion</a>
+								</div>
+								<a href="wishlist.html" title="Wishlist" class="btn-icon-wish"><i
+										class="icon-heart"></i></a>
+							</div>
+							<h3 class="product-title">
+								<a href="demo8-product.html">Brown Leather Sofa</a>
+							</h3>
+							<div class="ratings-container">
+								<div class="product-ratings">
+									<span class="ratings" style="width:0%"></span>
+									<!-- End .ratings -->
+									<span class="tooltiptext tooltip-top"></span>
+								</div>
+								<!-- End .product-ratings -->
+							</div>
+							<!-- End .product-container -->
+							<div class="price-box">
+								<span class="product-price">$199.00 – $209.00</span>
+							</div>
+							<!-- End .price-box -->
+						</div>
+						<!-- End .product-details -->
+					</div>
+				</div>
+				<div class="col-6 col-sm-4 col-md-3 appear-animate" data-animation-delay="100"
+					data-animation-duration="1500">
+					<div class="product-default inner-quickview inner-icon">
+						<figure>
+							<a href="demo8-product.html">
+								<img src="/public/assets/images/demoes/demo8/products/product-22.jpg" alt="product" width="300"
+									height="300" />
+								<img src="/public/assets/images/demoes/demo8/products/product-15.jpg" alt="product" width="300"
+									height="300" />
+							</a>
+							<div class="btn-icon-group">
+								<a href="#" class="btn-icon btn-add-cart product-type-simple"><i
+										class="icon-shopping-cart"></i></a>
+							</div>
+							<a href="/public/ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick
+								View</a>
+						</figure>
+						<div class="product-details">
+							<div class="category-wrap">
+								<div class="category-list">
+									<a href="demo8-shop.html" class="product-category">Dress</a>,
+									<a href="demo8-shop.html" class="product-category">T-Shirts</a>,
+									<a href="demo8-shop.html" class="product-category">Watches</a>
+								</div>
+								<a href="wishlist.html" title="Wishlist" class="btn-icon-wish"><i
+										class="icon-heart"></i></a>
+							</div>
+							<h3 class="product-title">
+								<a href="demo8-product.html">Headphone Black</a>
+							</h3>
+							<div class="ratings-container">
+								<div class="product-ratings">
+									<span class="ratings" style="width:0%"></span>
+									<!-- End .ratings -->
+									<span class="tooltiptext tooltip-top"></span>
+								</div>
+								<!-- End .product-ratings -->
+							</div>
+							<!-- End .product-container -->
+							<div class="price-box">
+								<span class="product-price">$299.00</span>
+							</div>
+							<!-- End .price-box -->
+						</div>
+						<!-- End .product-details -->
+					</div>
+				</div>
+				<div class="col-6 col-sm-4 col-md-3 appear-animate" data-animation-delay="100"
+					data-animation-duration="1500">
+					<div class="product-default inner-quickview inner-icon">
+						<figure>
+							<a href="demo8-product.html">
+								<img src="/public/assets/images/demoes/demo8/products/product-11.jpg" alt="product" width="300"
+									height="300" />
+								<img src="/public/assets/images/demoes/demo8/products/product-16.jpg" alt="product" width="300"
+									height="300" />
+							</a>
+							<div class="label-group">
+								<span class="product-label label-sale">-15%</span>
+							</div>
+							<div class="btn-icon-group">
+								<a href="demo8-product.html" class="btn-icon btn-add-cart"><i
+										class="fa fa-arrow-right"></i>
+								</a>
+							</div>
+							<a href="/public/ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick
+								View</a>
+						</figure>
+						<div class="product-details">
+							<div class="category-wrap">
+								<div class="category-list">
+									<a href="demo8-shop.html" class="product-category">Fashion</a>,
+									<a href="demo8-shop.html" class="product-category">watches</a>
+								</div>
+								<a href="wishlist.html" title="Wishlist" class="btn-icon-wish"><i
+										class="icon-heart"></i></a>
+							</div>
+							<h3 class="product-title">
+								<a href="demo8-product.html">Sofa</a>
+							</h3>
+							<div class="ratings-container">
+								<div class="product-ratings">
+									<span class="ratings" style="width:0%"></span>
+									<!-- End .ratings -->
+									<span class="tooltiptext tooltip-top"></span>
+								</div>
+								<!-- End .product-ratings -->
+							</div>
+							<!-- End .product-container -->
+							<div class="price-box">
+								<span class="old-price">$1,999.00</span>
+								<span class="product-price">$1,699.00</span>
+							</div>
+							<!-- End .price-box -->
+						</div>
+						<!-- End .product-details -->
+					</div>
+				</div>
+				<div class="col-6 col-sm-4 col-md-3 appear-animate" data-animation-delay="100"
+					data-animation-duration="1500">
+					<div class="product-default inner-quickview inner-icon">
+						<figure>
+							<a href="demo8-product.html">
+								<img src="/public/assets/images/demoes/demo8/products/product-23.jpg" alt="product" width="300"
+									height="300" />
+								<img src="/public/assets/images/demoes/demo8/products/product-17.jpg" alt="product" width="300"
+									height="300" />
+							</a>
+							<div class="btn-icon-group">
+								<a href="#" class="btn-icon btn-add-cart product-type-simple"><i
+										class="icon-shopping-cart"></i></a>
+							</div>
+							<a href="/public/ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick
+								View</a>
+						</figure>
+						<div class="product-details">
+							<div class="category-wrap">
+								<div class="category-list">
+									<a href="demo8-shop.html" class="product-category">Dress</a>,
+									<a href="demo8-shop.html" class="product-category">Shoes</a>,
+									<a href="demo8-shop.html" class="product-category">T-Shirts</a>
+								</div>
+								<a href="wishlist.html" title="Wishlist" class="btn-icon-wish"><i
+										class="icon-heart"></i></a>
+							</div>
+							<h3 class="product-title">
+								<a href="demo8-product.html">Leather Chair</a>
+							</h3>
+							<div class="ratings-container">
+								<div class="product-ratings">
+									<span class="ratings" style="width:0%"></span>
+									<!-- End .ratings -->
+									<span class="tooltiptext tooltip-top"></span>
+								</div>
+								<!-- End .product-ratings -->
+							</div>
+							<!-- End .product-container -->
+							<div class="price-box">
+								<span class="product-price">$55.00</span>
+							</div>
+							<!-- End .price-box -->
+						</div>
+						<!-- End .product-details -->
+					</div>
+				</div>
+				<div class="col-6 col-sm-4 col-md-3 appear-animate" data-animation-delay="100"
+					data-animation-duration="1500">
+					<div class="product-default inner-quickview inner-icon">
+						<figure>
+							<a href="demo8-product.html">
+								<img src="/public/assets/images/demoes/demo8/products/product-24.jpg" alt="product" width="300"
+									height="300" />
+								<img src="/public/assets/images/demoes/demo8/products/product-18.jpg" alt="product" width="300"
+									height="300" />
+							</a>
+							<div class="btn-icon-group">
+								<a href="demo8-product.html" class="btn-icon btn-add-cart"><i
+										class="fa fa-arrow-right"></i>
+								</a>
+							</div>
+							<a href="/public/ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick
+								View</a>
+						</figure>
+						<div class="product-details">
+							<div class="category-wrap">
+								<div class="category-list">
+									<a href="demo8-shop.html" class="product-category">Caps</a>,
+									<a href="demo8-shop.html" class="product-category">Fashion</a>,
+									<a href="demo8-shop.html" class="product-category">watches</a>
+								</div>
+								<a href="wishlist.html" title="Wishlist" class="btn-icon-wish"><i
+										class="icon-heart"></i></a>
+							</div>
+							<h3 class="product-title">
+								<a href="demo8-product.html">Simple Chair</a>
+							</h3>
+							<div class="ratings-container">
+								<div class="product-ratings">
+									<span class="ratings" style="width:0%"></span>
+									<!-- End .ratings -->
+									<span class="tooltiptext tooltip-top"></span>
+								</div>
+								<!-- End .product-ratings -->
+							</div>
+							<!-- End .product-container -->
+							<div class="price-box">
+								<span class="product-price">$299.00</span>
+							</div>
+							<!-- End .price-box -->
+						</div>
+						<!-- End .product-details -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End .container -->
+
+		<div class="sale-banner banner appear-animate" data-animation-delay="100" data-animation-duration="1500">
+			<div class="container banner-content">
+				<div class="row no-gutter bg-secondary">
+					<div class="col-auto col-md-4 d-flex flex-column justify-content-center col-1">
+						<h4 class="align-left text-uppercase mb-0">Furniture &amp; Garden</h4>
+						<h3 class="text-white mb-0 align-left text-uppercase">Huge Sale</h3>
+					</div>
+					<div class="col-auto col-md-4 col-2">
+						<h5 class="text-white mb-0 position-relative align-left">50<small>%<ins>OFF</ins></small>
+						</h5>
+					</div>
+					<div class="mb-0 col-md-4 col-3 col-auto">
+						<a href="demo8-shop.html" class="btn btn-lg btn-primary">Shop Now!</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="product-widgets row pt-1">
+				<div class="col-md-4 col-sm-6 pb-5 appear-animate" data-animation-name="fadeInRightShorter">
+					<h4 class="subtitle text-left text-uppercase">Top Rated Products</h4>
+					<div class="heading-spacer"></div>
+					<div class="product-default left-details product-widget mb-2">
+						<figure>
+							<a href="demo8-product.html">
+								<img src="/public/assets/images/demoes/demo8/products/product-8.jpg" width="175" height="175"
+									alt="product" />
+								<img src="/public/assets/images/demoes/demo8/products/product-1.jpg" width="175" height="175"
+									alt="product" />
+							</a>
+						</figure>
+						<div class="product-details">
+							<div class="category-list">
+								<a href="demo8-shop.html" class="product-category">caps</a>,
+								<a href="demo8-shop.html" class="product-category">fashion</a>,
+								<a href="demo8-shop.html" class="product-category">t-shirts</a>
+							</div>
+							<h3 class="product-title"> <a href="demo8-product.html">Porto Arm Chair</a> </h3>
+							<div class="ratings-container">
+								<div class="product-ratings">
+									<span class="ratings" style="width:100%"></span>
+									<!-- End .ratings -->
+									<span class="tooltiptext tooltip-top"></span>
+								</div>
+								<!-- End .product-ratings -->
+							</div>
+							<!-- End .product-container -->
+							<div class="price-box">
+								<span class="product-price">$69.00</span>
+							</div>
+							<!-- End .price-box -->
+						</div>
+						<!-- End .product-details -->
+					</div>
+					<div class="product-default left-details product-widget mb-2">
+						<figure>
+							<a href="demo8-product.html">
+								<img src="/public/assets/images/demoes/demo8/products/product-21.jpg" width="175" height="175"
+									alt="product" />
+								<img src="/public/assets/images/demoes/demo8/products/product-6.jpg" width="175" height="175"
+									alt="product" />
+							</a>
+						</figure>
+						<div class="product-details">
+							<div class="category-list">
+								<a href="demo8-shop.html" class="product-category">Fashion</a>,
+								<a href="demo8-shop.html" class="product-category">Shoes</a>,
+								<a href="demo8-shop.html" class="product-category">Toys</a>
+							</div>
+							<h3 class="product-title"> <a href="demo8-product.html">Porto Both Sticky Info</a> </h3>
+							<div class="ratings-container">
+								<div class="product-ratings">
+									<span class="ratings" style="width:80%"></span>
+									<!-- End .ratings -->
+									<span class="tooltiptext tooltip-top">4.00</span>
+								</div>
+								<!-- End .product-ratings -->
+							</div>
+							<!-- End .product-container -->
+							<div class="price-box">
+								<span class="product-price">$39.00 – $108.00</span>
+							</div>
+							<!-- End .price-box -->
+						</div>
+						<!-- End .product-details -->
+					</div>
+					<div class="product-default left-details product-widget mb-2">
+						<figure>
+							<a href="demo8-product.html">
+								<img src="/public/assets/images/demoes/demo8/products/product-13.jpg" width="175" height="175"
+									alt="product" />
+								<img src="/public/assets/images/demoes/demo8/products/product-23.jpg" width="175" height="175"
+									alt="product" />
+							</a>
+						</figure>
+						<div class="product-details">
+							<div class="category-list">
+								<a href="demo8-shop.html" class="product-category">Accessories</a>,
+								<a href="demo8-shop.html" class="product-category">Caps</a>,
+								<a href="demo8-shop.html" class="product-category">Dress</a>,
+								<a href="demo8-shop.html" class="product-category">Electronics</a>
+							</div>
+							<h3 class="product-title"> <a href="demo8-product.html">Red Chair</a> </h3>
+							<div class="ratings-container">
+								<div class="product-ratings">
+									<span class="ratings" style="width:0%"></span>
+									<!-- End .ratings -->
+									<span class="tooltiptext tooltip-top"></span>
+								</div>
+								<!-- End .product-ratings -->
+							</div>
+							<!-- End .product-container -->
+							<div class="price-box">
+								<span class="product-price">$299.00</span>
+							</div>
+							<!-- End .price-box -->
+						</div>
+						<!-- End .product-details -->
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6 pb-5 appear-animate" data-animation-delay="100"
+					data-animation-duration="1500">
+					<h4 class="subtitle text-left text-uppercase">Best Selling Products</h4>
+					<div class="heading-spacer"></div>
+					<div class="product-default left-details product-widget mb-2">
+						<figure>
+							<a href="demo8-product.html">
+								<img src="/public/assets/images/demoes/demo8/products/product-19.jpg" width="175" height="175"
+									alt="product" />
+								<img src="/public/assets/images/demoes/demo8/products/product-9.jpg" width="175" height="175"
+									alt="product" />
+							</a>
+						</figure>
+						<div class="product-details">
+							<div class="category-list">
+								<a href="demo8-shop.html" class="product-category">Fashion</a>
+							</div>
+							<h3 class="product-title"> <a href="demo8-product.html">Brown Leather Sofa</a> </h3>
+							<div class="ratings-container">
+								<div class="product-ratings">
+									<span class="ratings" style="width:0%"></span>
+									<!-- End .ratings -->
+									<span class="tooltiptext tooltip-top"></span>
+								</div>
+								<!-- End .product-ratings -->
+							</div>
+							<!-- End .product-container -->
+							<div class="price-box">
+								<span class="product-price">$199.00 – $209.00</span>
+							</div>
+							<!-- End .price-box -->
+						</div>
+						<!-- End .product-details -->
+					</div>
+					<div class="product-default left-details product-widget mb-2">
+						<figure>
+							<a href="demo8-product.html">
+								<img src="/public/assets/images/demoes/demo8/products/product-4.jpg" width="175" height="175"
+									alt="product" />
+								<img src="/public/assets/images/demoes/demo8/products/product-11.jpg" width="175" height="175"
+									alt="product" />
+							</a>
+						</figure>
+						<div class="product-details">
+							<div class="category-list">
+								<a href="demo8-shop.html" class="product-category">Accessories</a>,
+								<a href="demo8-shop.html" class="product-category">Caps</a>,
+								<a href="demo8-shop.html" class="product-category">Dress</a>,
+								<a href="demo8-shop.html" class="product-category">Electronics</a>
+							</div>
+							<h3 class="product-title"> <a href="demo8-product.html">Product Extended</a> </h3>
+							<div class="ratings-container">
+								<div class="product-ratings">
+									<span class="ratings" style="width:0%"></span>
+									<!-- End .ratings -->
+									<span class="tooltiptext tooltip-top"></span>
+								</div>
+								<!-- End .product-ratings -->
+							</div>
+							<!-- End .product-container -->
+							<div class="price-box">
+								<span class="product-price">$105.00</span>
+							</div>
+							<!-- End .price-box -->
+						</div>
+						<!-- End .product-details -->
+					</div>
+					<div class="product-default left-details product-widget mb-2">
+						<figure>
+							<a href="demo8-product.html">
+								<img src="/public/assets/images/demoes/demo8/products/product-9.jpg" width="175" height="175"
+									alt="product" />
+								<img src="/public/assets/images/demoes/demo8/products/product-24.jpg" width="175" height="175"
+									alt="product" />
+							</a>
+						</figure>
+						<div class="product-details">
+							<div class="category-list">
+								<a href="demo8-shop.html" class="product-category">T-shirts</a>,
+								<a href="demo8-shop.html" class="product-category">Toys</a>,
+								<a href="demo8-shop.html" class="product-category">Trousers</a>
+							</div>
+							<h3 class="product-title"> <a href="demo8-product.html">Porto Sports Shoes</a> </h3>
+							<div class="ratings-container">
+								<div class="product-ratings">
+									<span class="ratings" style="width:0%"></span>
+									<!-- End .ratings -->
+									<span class="tooltiptext tooltip-top"></span>
+								</div>
+								<!-- End .product-ratings -->
+							</div>
+							<!-- End .product-container -->
+							<div class="price-box">
+								<span class="product-price">$101.00 – $111.00</span>
+							</div>
+							<!-- End .price-box -->
+						</div>
+						<!-- End .product-details -->
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6 pb-5 appear-animate" data-animation-name="fadeInLeftShorter">
+					<h4 class="subtitle text-left text-uppercase">Latest Products</h4>
+					<div class="heading-spacer"></div>
+					<div class="product-default left-details product-widget mb-2">
+						<figure>
+							<a href="demo8-product.html">
+								<img src="/public/assets/images/demoes/demo8/products/product-25.jpg" width="175" height="175"
+									alt="banner" />
+								<img src="/public/assets/images/demoes/demo8/products/product-5.jpg" width="175" height="175"
+									alt="product" />
+							</a>
+						</figure>
+						<div class="product-details">
+							<div class="category-list">
+								<a href="demo8-shop.html" class="product-category">Accessories</a>,
+								<a href="demo8-shop.html" class="product-category">Caps</a>,
+								<a href="demo8-shop.html" class="product-category">Dress</a>,
+								<a href="demo8-shop.html" class="product-category">Electronics</a>
+							</div>
+							<h3 class="product-title"> <a href="demo8-product.html">Product Left Sidebar</a> </h3>
+							<div class="ratings-container">
+								<div class="product-ratings">
+									<span class="ratings" style="width:0%"></span>
+									<!-- End .ratings -->
+									<span class="tooltiptext tooltip-top"></span>
+								</div>
+								<!-- End .product-ratings -->
+							</div>
+							<!-- End .product-container -->
+							<div class="price-box">
+								<span class="product-price">$101.00 – $111.00</span>
+							</div>
+							<!-- End .price-box -->
+						</div>
+						<!-- End .product-details -->
+					</div>
+					<div class="product-default left-details product-widget mb-2">
+						<figure>
+							<a href="demo8-product.html">
+								<img src="/public/assets/images/demoes/demo8/products/product-26.jpg" width="175" height="175"
+									alt="product" />
+								<img src="/public/assets/images/demoes/demo8/products/product-8.jpg" width="175" height="175"
+									alt="product" />
+							</a>
+						</figure>
+						<div class="product-details">
+							<div class="category-list">
+								<a href="demo8-shop.html" class="product-category">Accessories</a>,
+								<a href="demo8-shop.html" class="product-category">Caps</a>,
+								<a href="demo8-shop.html" class="product-category">Dress</a>,
+								<a href="demo8-shop.html" class="product-category">Electronics</a>
+							</div>
+							<h3 class="product-title"> <a href="demo8-product.html">Porto Evolution Headset</a>
+							</h3>
+							<div class="ratings-container">
+								<div class="product-ratings">
+									<span class="ratings" style="width:0%"></span>
+									<!-- End .ratings -->
+									<span class="tooltiptext tooltip-top"></span>
+								</div>
+								<!-- End .product-ratings -->
+							</div>
+							<!-- End .product-container -->
+							<div class="price-box">
+								<span class="product-price">$69.00</span>
+							</div>
+							<!-- End .price-box -->
+						</div>
+						<!-- End .product-details -->
+					</div>
+					<div class="product-default left-details product-widget mb-2">
+						<figure>
+							<a href="demo8-product.html">
+								<img src="/public/assets/images/demoes/demo8/products/product-13.jpg" width="175" height="175"
+									alt="product" />
+								<img src="/public/assets/images/demoes/demo8/products/product-19.jpg" width="175" height="175"
+									alt="product" />
+							</a>
+						</figure>
+						<div class="product-details">
+							<div class="category-list">
+								<a href="demo8-shop.html" class="product-category">Electronics</a>,
+								<a href="demo8-shop.html" class="product-category">Fashion</a>,
+								<a href="demo8-shop.html" class="product-category">Watches</a>
+							</div>
+							<h3 class="product-title"> <a href="demo8-product.html">Porto Brown Chair</a> </h3>
+							<div class="ratings-container">
+								<div class="product-ratings">
+									<span class="ratings" style="width:0%"></span>
+									<!-- End .ratings -->
+									<span class="tooltiptext tooltip-top"></span>
+								</div>
+								<!-- End .product-ratings -->
+							</div>
+							<!-- End .product-container -->
+							<div class="price-box">
+								<span class="product-price">$101.00 – $111.00</span>
+							</div>
+							<!-- End .price-box -->
+						</div>
+						<!-- End .product-details -->
+					</div>
+				</div>
+			</div>
+			<!-- End .product-widgets -->
+		</div>
+		<!-- End .instagram-section -->
+	</main>
+	<!-- End .main -->
+	<%- include ('footer.ejs') %>

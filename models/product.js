@@ -11,10 +11,13 @@ const productSchema = Schema({
     type: String,
     required: true,
   },
-  imagePath: {
-    type: String,
+  imagePaths: {
+    type: [String],
     required: true,
-    get: convertImagePath,
+    //get: convertImagePath,
+  },
+  colors:{
+    type:[String]
   },
   sizes: {
     type: [String],
@@ -24,8 +27,8 @@ const productSchema = Schema({
     type: String,
     required: true,
   },
-  price: {
-    type: Number,
+  prices: {
+    type: [Number],
     required: true,
   },
   category: {

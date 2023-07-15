@@ -9,9 +9,17 @@ const Category = require("../models/category");
 const Banner = require("../models/banner");
 const Blog = require("../models/blog");
 const Contact = require("../models/contact");
+const AdminJS = require('adminjs');
+const AdminJSExpress = require('@adminjs/express');
+const AdminJSMongoose = require("@adminjs/mongoose");
 
 AdminBro.registerAdapter(AdminBroMongoose);
 
+AdminBro.registerAdapter(AdminBroMongoose);
+// AdminJS.registerAdapter({
+//   Resource: AdminJSMongoose.Resource,
+//   Database: AdminJSMongoose.Database,
+// })
 const express = require("express");
 const app = express();
 
@@ -24,166 +32,87 @@ const adminBro = new AdminBro({
   },
   resources: [
     {
-      resource: Product,
-      options: {
-        // parent: {
-        //   name: "Admin Content",
-        //   icon: "InventoryManagement",
-        // },
-        properties: {
-          sizes: {
-            isVisible: { list: false, filter: true, show: true, edit: true },
-          },
-          description: {
-            type: "richtext",
-            isVisible: { list: false, filter: true, show: true, edit: true },
-          },
-          _id: {
-            isVisible: { list: false, filter: true, show: true, edit: false },
-          },
-          title: {
-            isTitle: true,
-          },
-          price: {
-            type: "number",
-          },
-          imagePath: {
-            isVisible: { list: false, filter: false, show: true, edit: true },
-          },
-        },
-      },
-    },
-    {
       resource: User,
-      options: {
-        // parent: {
-        //   name: "User Content",
-        //   icon: "User",
-        // },
-        properties: {
-          _id: {
-            isVisible: { list: false, filter: true, show: true, edit: false },
-          },
-          username: {
-            isTitle: true,
-          },
-        },
-      },
     },
-    // {
-    //   resource: Order,
-    //   options: {
-    //     // parent: {
-    //     //   name: "User Content",
-    //     //   icon: "User",
-    //     // },
-    //     properties: {
-    //       _id: {
-    //         isVisible: { list: false, filter: true, show: false, edit: false },
-    //       },
-    //       orderId:{
-    //         isVisible: { list: false, filter: true, show: true, edit: false },
-    //       },
-    //       name:{
-    //         isVisible: { list: false, filter: true, show: true, edit: false },
-    //       },
-    //       phoneNumber:{
-    //         isVisible: { list: false, filter: true, show: true, edit: false },
-    //       },
-    //       address: {
-    //         isVisible: { list: false, filter: true, show: true, edit: false },
-    //       },
-    //       paymentMethod:{
-    //         isVisible: { list: false, filter: true, show: true, edit: false },
-    //       },
-    //       note:{
-    //         isVisible: { list: false, filter: true, show: true, edit: false },
-    //       },
-    //       createdAt: {
-    //         isVisible: { list: true, filter: true, show: true, edit: false },
-    //       },
-    //       cart: {
-    //         isVisible: { list: false, filter: false, show: true, edit: false },
-    //         components: {
-    //           show: AdminBro.bundle("../components/admin-order-component.jsx"),
-    //         },
-    //       },
-    //       "cart.items": {
-    //         isVisible: {
-    //           list: false,
-    //           filter: false,
-    //           show: false,
-    //           edit: false,
-    //         },
-    //       },
-    //       "cart.totalQty": {
-    //         isVisible: {
-    //           list: false,
-    //           filter: false,
-    //           show: false,
-    //           edit: false,
-    //         },
-    //       },
-    //       "cart.totalCost": {
-    //         isVisible: {
-    //           list: false,
-    //           filter: false,
-    //           show: false,
-    //           edit: false,
-    //         },
-    //       },
-    //     },
-    //   },
-    // },
     {
       resource: Category,
       options: {
-        // parent: {
-        //   name: "Admin Content",
-        //   icon: "User",
-        // },
+        listProperties: ['title', 'slug'],
+        filterProperties: ['title', 'slug'],
+        editProperties: ['title', 'slug'],
+        showProperties: ['title', 'slug'],
         properties: {
-          _id: {
-            isVisible: { list: false, filter: true, show: true, edit: false },
-          },
-          slug: {
-            isVisible: { list: false, filter: false, show: true, edit: false },
-          },
-          title: {
-            isTitle: true,
-          },
+          title: { isTitle: true },
         },
+      },
+    },
+    {
+      resource: Product,
+      options: {
+        sort: {
+          sortBy: 'createdAt',
+          direction: 'desc',
+        },
+        listProperties: ['productCode', 'title', 'category', 'createdAt'],
+        filterProperties: ['productCode', 'title', 'category', 'prices', 'createdAt'],
+        editProperties: ['productCode', 'title', 'category', 'imagePaths', 'colors', 'sizes', 'prices', 'description', 'available', 'createdAt'],
+        showProperties: ['productCode', 'title', 'category', 'imagePaths', 'colors', 'sizes', 'prices', 'description', 'available', 'createdAt'],
+        properties: {
+          description: { type: "richtext" },
+          title: { isTitle: true, },
+          createdAt: { type: "datetime" },
+        },
+      },
+    },
+    {
+      resource: Order,
+      options: {
+        sort: {
+          sortBy: 'createdAt',
+          direction: 'desc',
+        },
+        listProperties: ['_id', 'name', 'phoneNumber', 'address', 'cart.totalCost', 'createdAt'],
+        filterProperties: ['_id', 'name', 'phoneNumber', 'address', 'cart.totalCost', 'createdAt'],
+        //editProperties: [],
+        showProperties: ['_id', 'name', 'phoneNumber', 'address', 'cart.items', 'cart.totalQty', 'cart.totalCost', 'paymentMethod', 'note', 'createdAt'],
+        properties: {
+          createdAt: { type: "datetime" },
+        }
+      }
+    },
+    {
+      resource: Contact,
+      options: {
+        sort: {
+          sortBy: 'createdAt',
+          direction: 'desc',
+        },
+        listProperties: ['name', 'phone', 'email', 'subject', 'createdAt'],
+        filterProperties: ['name', 'phone', 'email', 'subject', 'createdAt'],
+        editProperties: [],
+        showProperties: ['name', 'phone', 'email', 'subject', 'message', 'createdAt'],
+        properties: {
+          createdAt: { type: "datetime" },
+          message: { type: "richtext" }
+        }
       },
     },
     {
       resource: Blog,
       options: {
-        // parent: {
-        //   name: "Admin Content",
-        //   icon: "User",
-        // },
-        properties: {
-          _id: {
-            isVisible: { list: false, filter: true, show: true, edit: false },
-          },
-          title: {
-            isTitle: true,
-            isVisible: { list: true, filter: true, show: true, edit: true },
-          },
-          quickDescription: {
-            isVisible: { list: true, filter: true, show: true, edit: true },
-          },
-          description: {
-            type: "richtext",
-            isVisible: { list: false, filter: true, show: true, edit: true },
-          },
-          createdAt: {
-            isVisible: { list: true, filter: true, show: true, edit: false },
-          },
-          slug: {
-            isVisible: { list: false, filter: false, show: false, edit: false },
-          },
+        sort: {
+          sortBy: 'updatedAt',
+          direction: 'desc',
         },
+        listProperties: ['title', 'quickDescription', 'createdAt'],
+        filterProperties: ['title', 'quickDescription', 'createdAt'],
+        editProperties: ['title', 'quickDescription', 'description', 'slug', 'createdAt'],
+        showProperties: ['title', 'quickDescription', 'description', 'slug', 'createdAt'],
+        properties: {
+          createdAt: { type: "datetime" },
+          title: { isTitle: true },
+          description: { type: "richtext" }
+        }
       },
     },
   ],
@@ -191,14 +120,78 @@ const adminBro = new AdminBro({
     translations: {
       labels: {
         loginWelcome: "Admin Panel Login",
+        Product: 'Sản phẩm',
+        Blog: 'Tin tức',
+        Order: 'Đơn hàng',
+        Category: 'Danh mục sản phẩm',
+        Contact: 'Liên hệ',
+        User: 'Tài khoản'
       },
-      messages: {
-        loginWelcome:
-          "Please enter your credentials to log in and manage your website contents",
-      },
+      resources: {
+        Blog: {
+          properties: {
+            title: 'Tiêu đề',
+            quickDescription: 'Mô tả ngắn',
+            description: 'Mô tả chi tiết',
+            createdAt: 'Thời gian tạo'
+          }
+        },
+        Product: {
+          properties: {
+            sizes: 'Kích thước',
+            description: 'Mô tả',
+            title: 'Tên sản phẩm',
+            prices: 'Giá',
+            colors: 'Màu',
+            imagePaths: 'Link hình ảnh',
+            productCode: 'Mã sản phẩm',
+            createdAt: 'Thời gian tạo',
+            category: 'Danh mục',
+            available: 'Có sẵn'
+          }
+        },
+        Category: {
+          properties: {
+            title: 'Tên danh mục'
+          }
+        },
+        Order: {
+          properties: {
+            name: 'Tên khách hàng',
+            _id: 'Mã đơn hàng',
+            'cart.totalQty': 'Tổng số lượng',
+            'cart.totalCost': 'Tổng tiền',
+            'cart.items': 'Chi tiết',
+            'cart.items.productId': 'Sản phẩm',
+            'cart.items.qty': 'Số lượng',
+            'cart.items.price': 'Thành tiền',
+            'cart.items.title': 'Tên sản phẩm',
+            'cart.items.productCode': 'Mã sản phẩm',
+            phoneNumber: 'Số điện thoại',
+            address: 'Địa chỉ',
+            note: 'Ghi chú',
+            paymentMethod: 'Phương thức thanh toán',
+            createdAt: 'Thời gian',
+          }
+        },
+        Contact: {
+          properties: {
+            name: 'Tên khách hàng',
+            phone: 'Số điện thoại',
+            subject: 'Chủ đề',
+            message: 'Lời nhắn',
+            createdAt: 'Thời gian'
+          }
+        }
+      }
+    },
+    messages: {
+      loginWelcome:
+        "Please enter your credentials to log in and manage your website contents",
     },
   },
-});
+},
+);
 
 const ADMIN = {
   email: process.env.ADMIN_EMAIL,

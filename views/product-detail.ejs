@@ -1,119 +1,240 @@
-<%- include ('css.ejs') %>
-    <link rel="stylesheet" href="/public/css/style.css">
-    <%- include ('header.ejs') %>
-        <!-- mt side menu start here -->
-        <!-- mt search popup start here -->
-        <%- include ('search.ejs') %>
-            <!-- mt search popup end here -->
-            <!-- mt main start here -->
-            <main id="mt-main">
-                <!-- Mt Product Detial of the Page -->
-                <section class="mt-product-detial wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <!-- Slider of the Page -->
-                                <div class="slider">
-                                    <figure class="zoom" style="background:url(<%=product.imagePath%>)"
-                                        onmousemove="zoom(event)" ontouchmove="zoom(event)">
-                                        <img src="<%=product.imagePath%>" />
-                                    </figure>
-                                </div>
-                                <div class="detial-holder">
-                                    <h2>
-                                        <%=product.title%>
-                                    </h2>
-                                    <div class="txt-wrap">
-                                        <%-product.description%>
-                                    </div>
-                                    <div class="text-holder">
-                                        <span class="price">
-                                            <%=product.price%> &#x20AB;
-                                        </span>
-                                    </div>
-                                    <!-- Product Form of the Page -->
-                                    <form action="/add-to-cart/<%=product._id%>" class="product-form" method="GET">
-                                        <fieldset>
-                                            <div class="row-val">
-                                                <label for="qty">Số lượng</label>
-                                                <input name="qty" type="number" id="qty" placeholder="1" min="1"
-                                                    value="1">
-                                            </div>
-                                            <div class="row-val">
-                                                <button type="submit">THÊM VÀO GIỎ</button>
-                                            </div>
-                                        </fieldset>
-                                    </form>
-                                    <!-- Product Form of the Page end -->
-                                </div>
-                                <!-- Detail Holder of the Page end -->
-                            </div>
-                        </div>
-                    </div>
-                </section><!-- Mt Product Detial of the Page end -->
-                <!-- related products start here -->
-                <div class="related-products wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <br>
-                                <h2>GỢI Ý CHO BẠN</h2>
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <% relatedProducts.forEach((item)=>{ %>
-                                            <!-- mt product1 center start here -->
-                                            <div class="mt-product1 mt-paddingbottom20">
-                                                <div class="box">
-                                                    <div class="b1">
-                                                        <div class="b2">
-                                                            <a href="/products/<%=item.category.slug%>/<%=item._id%>"><img
-                                                                    src="<%=item.imagePath%>"
-                                                                    alt="image description"></a>
-                                                            <!-- <ul class="mt-stars">
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star-o"></i></li>
-                                                    </ul> -->
-                                                            <!-- <ul class="links">
-                                                        <li><a href="#"><i class="icon-handbag"></i><span>Thêm vào giỏ</span></a></li>
-                                                        <li><a href="#"><i class="icomoon icon-heart-empty"></i></a>
-                                                        </li>
-                                                        <li><a href="#"><i class="icomoon icon-exchange"></i></a></li>
-                                                    </ul> -->
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="txt">
-                                                    <strong class="title"><a
-                                                            href="/products/<%=item.category.slug%>/<%=item._id%>">
-                                                            <%=item.title%>
-                                                        </a></strong>
-                                                    <span class="price">
-                                                        <!-- <i class="fa fa-eur"></i>  -->
-                                                        <%=item.price%> &#x20AB;
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <%})%>
-                                                <!-- mt product1 center end here -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- related products end here -->
+<%- include ('header.ejs') %>
+    <main class="main">
+        <div class="container">
+            <nav aria-label="breadcrumb" class="breadcrumb-nav">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="demo8.html"><i class="icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="#">Products</a></li>
+                </ol>
+            </nav>
+            <div class="product-single-container product-single-default">
+                <div class="cart-message d-none">
+                    <strong class="single-cart-notice">
+                        <%=product.title%>
+                    </strong>
+                    <span>đã được thêm vào giỏ hàng.</span>
                 </div>
-            </main><!-- mt main end here -->
-            <!-- footer of the Page -->
-            <%- include ('footer.ejs') %>
-                <script>
-                    function zoom(e) {
-                        var zoomer = e.currentTarget;
-                        e.offsetX ? offsetX = e.offsetX : offsetX = e.touches[0].pageX
-                        e.offsetY ? offsetY = e.offsetY : offsetX = e.touches[0].pageX
-                        x = (offsetX / zoomer.offsetWidth) * 100
-                        y = (offsetY / zoomer.offsetHeight) * 100
-                        zoomer.style.backgroundPosition = x + "% " + y + "%";
-                    }
-                </script>
-                <%- include ('js.ejs') %>
+
+                <div class="row">
+                    <div class="col-lg-5 col-md-6 product-single-gallery">
+                        <div class="product-slider-container">
+                            <div class="label-group">
+                                <div class="product-label label-hot">HOT</div>
+                                <!---->
+                                <!-- <div class="product-label label-sale">
+                                    -16%
+                                </div> -->
+                            </div>
+
+                            <div class="product-single-carousel owl-carousel owl-theme show-nav-hover">
+                                <% product.imagePaths.forEach((image)=> { %>
+                                    <div class="product-item">
+                                        <img class="product-single-image" src="<%=image%>" data-zoom-image="<%=image%>"
+                                            width="468" height="468" alt="product" />
+                                    </div>
+                                    <%})%>
+                            </div>
+                            <!-- End .product-single-carousel -->
+                            <span class="prod-full-screen">
+                                <i class="icon-plus"></i>
+                            </span>
+                        </div>
+
+                        <div class="prod-thumbnail owl-dots">
+                            <% product.imagePaths.forEach((image)=> { %>
+                                <div class="owl-dot">
+                                    <img src="<%=image%>" width="110" height="110" alt="product-thumbnail" />
+                                </div>
+                                <%})%>
+                        </div>
+                    </div><!-- End .product-single-gallery -->
+
+                    <div class="col-lg-7 col-md-6 product-single-details">
+                        <h1 class="product-title">
+                            <%=product.title%>
+                        </h1>
+
+                        <!-- <div class="product-nav">
+                            <div class="product-prev">
+                                <a href="#">
+                                    <span class="product-link"></span>
+
+                                    <span class="product-popup">
+                                        <span class="box-content">
+                                            <img alt="product" width="150" height="150"
+                                                src="/public/assets/images/products/product-3.jpg"
+                                                style="padding-top: 0px;">
+
+                                            <span>Circled Ultimate 3D Speaker</span>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+
+                            <div class="product-next">
+                                <a href="#">
+                                    <span class="product-link"></span>
+
+                                    <span class="product-popup">
+                                        <span class="box-content">
+                                            <img alt="product" width="150" height="150"
+                                                src="/public/assets/images/products/product-4.jpg"
+                                                style="padding-top: 0px;">
+
+                                            <span>Blue Backpack for the Young</span>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </div> -->
+
+                        <hr class="short-divider">
+
+                        <div class="price-box">
+                            <span class="product-price">
+                                <%=new Intl.NumberFormat('vi-VN', { style: 'currency' , currency: 'VND'
+                                    }).format(product.prices[0])%> -
+                                    <%=new Intl.NumberFormat('vi-VN', { style: 'currency' , currency: 'VND'
+                                        }).format(product.prices[product.prices.length-1])%>
+                            </span>
+                            <!-- <span class="product-price">
+                                <%=new Intl.NumberFormat('vi-VN', { style: 'currency' , currency: 'VND'
+                                    }).format(product.prices[product.prices.length-1])%>
+                            </span> -->
+                        </div><!-- End .price-box -->
+
+                        <div class="product-desc">
+                            <p>
+                                <%=product.description%>
+                            </p>
+                        </div><!-- End .product-desc -->
+
+                        <!-- <ul class="single-info-list">
+
+                            <li>
+                                SKU: <strong>654613612</strong>
+                            </li>
+
+                            <li>
+                                CATEGORY: <strong><a href="#" class="product-category">Fashion</a></strong>
+                            </li>
+
+                            <li>
+                                TAGs: <strong><a href="#" class="product-category">CLOTHES</a></strong>,
+                                <strong><a href="#" class="product-category">SWEATER</a></strong>
+                            </li>
+                        </ul> -->
+
+                        <div class="product-filters-container">
+                            <div class="product-single-filter select-custom">
+                                <select name="orderby" class="form-control">
+                                    <option value="" selected="selected">Chọn màu
+                                    </option>
+                                    <% product.colors.forEach((color)=> { %>
+                                        <option value="<%=color%>">
+                                            <%=color%>
+                                        </option>
+                                        <% }) %>
+                                </select>
+                            </div>
+
+                            <div class="product-single-filter select-custom">
+                                <select name="orderby" class="form-control" id="size">
+                                    <option value="" selected="selected">Chọn kích thước
+                                    </option>
+                                    <%for(let i=0;i<product.sizes.length;i++) {%>
+                                        <option value="<%=product.prices[i]%>">
+                                            <%=product.sizes[i]%>
+                                        </option>
+                                        <%}%>
+                                </select>
+                            </div>
+
+                            <div class="product-single-filter">
+                                <a class="font1 text-uppercase clear-btn" href="#">Xóa lựa chọn</a>
+                            </div>
+                            <!---->
+                        </div>
+
+                        <div class="product-action">
+                            <div class="price-box product-filtered-price">
+                                <!-- <del class="old-price"><span x-text="promo">$286.00</span></del> -->
+                                <span class="product-price" x-text="price">$245.00</span>
+                            </div>
+
+                            <div class="product-single-qty">
+                                <input class="horizontal-quantity form-control" type="text">
+                            </div><!-- End .product-single-qty -->
+
+                            <a href="javascript:;" class="btn btn-dark add-cart mr-2" title="Add to Cart">Chọn Mua</a>
+
+                            <a href="cart.html" class="btn btn-gray view-cart d-none">Xem giỏ hàng</a>
+                        </div><!-- End .product-action -->
+
+                        <hr class="divider mb-0 mt-0">
+
+                        <div class="product-single-share mb-2 mb-md-0">
+                            <label class="sr-only">Share:</label>
+
+                            <div class="social-icons mr-2">
+                                <a href="#" class="social-icon social-facebook icon-facebook" target="_blank"
+                                    title="Facebook"></a>
+                                <a href="#" class="social-icon social-twitter icon-twitter" target="_blank"
+                                    title="Twitter"></a>
+                                <a href="#" class="social-icon social-linkedin fab fa-linkedin-in" target="_blank"
+                                    title="Linkedin"></a>
+                                <a href="#" class="social-icon social-gplus fab fa-google-plus-g" target="_blank"
+                                    title="Google +"></a>
+                                <a href="#" class="social-icon social-mail icon-mail-alt" target="_blank"
+                                    title="Mail"></a>
+                            </div><!-- End .social-icons -->
+
+                            <!-- <a href="wishlist.html" class="btn-icon-wish add-wishlist" title="Add to Wishlist"><i
+                                    class="icon-wishlist-2"></i><span>Add to
+                                    Wishlist</span></a> -->
+                        </div><!-- End .product single-share -->
+                    </div><!-- End .product-single-details -->
+                </div><!-- End .row -->
+            </div><!-- End .product-single-container -->
+
+            <div class="products-section pt-0">
+                <h2 class="section-title pb-3">Sản phẩm tương tự</h2>
+
+                <div class="products-slider owl-carousel owl-theme dots-top dots-small">
+                    <% relatedProducts.forEach((item)=>{ %>
+                        <div class="product-default inner-quickview inner-icon">
+                            <figure>
+                                <a href="/products/<%=item.category.slug%>/<%=item.productCode%>">
+                                    <img src="<%=item.imagePaths[0]%>" alt="product" width="300" height="300" />
+                                    <img src="<%=item.imagePaths[1]%>" alt="product" width="300" height="300" />
+                                </a>
+                                <div class="btn-icon-group">
+                                    <a href="/products/<%=item.category.slug%>/<%=item.productCode%>"
+                                        class="btn-icon btn-add-cart"><i class="fa fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </figure>
+                            <div class="product-details">
+                                <h3 class="product-title">
+                                    <a href="/products/<%=item.category.slug%>/<%=item.productCode%>">
+                                        <%=item.title%>
+                                    </a>
+                                </h3>
+                                <div class="price-box">
+                                    <span class="product-price">
+                                        <%=Intl.NumberFormat('vi-VN', { style: 'currency' , currency: 'VND'
+                                            }).format(item.prices[0])%> –
+                                            <%=Intl.NumberFormat('vi-VN', { style: 'currency' , currency: 'VND'
+                                                }).format(item.prices[item.prices.length-1])%>
+                                    </span>
+                                </div><!-- End .price-box -->
+                            </div><!-- End .product-details -->
+                        </div>
+                        <%})%>
+                </div><!-- End .products-slider -->
+            </div><!-- End .products-section -->
+
+            <hr class="mt-0 m-b-5" />
+        </div><!-- End .container -->
+    </main><!-- End .main -->
+    <%- include ('footer.ejs') %>

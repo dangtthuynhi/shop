@@ -3,7 +3,7 @@ const faker = require('faker')
 const Product = require("../models/product");
 const Category = require("../models/category");
 
-mongoose.connect('mongodb://localhost:27017/test', {
+mongoose.connect('mongodb://localhost:27017/nhi_test1', {
     useNewUrlParser: true,
 });
 
@@ -20,10 +20,11 @@ for (let i = 0; i < 4; i++) {
                     category: category._id,
                     productCode: faker.random.alpha(10),
                     title: faker.commerce.productName(),
-                    imagePaths: [faker.image.business(),faker.image.business()],
-                    sizes: faker.random.alpha(10),
+                    imagePaths: [faker.image.business(), faker.image.business()],
+                    sizes: [faker.random.alpha(10), faker.random.alpha(10)],
                     description: faker.commerce.productDescription(),
-                    price: faker.commerce.price(),
+                    colors: [faker.commerce.productName(),faker.commerce.productName()],
+                    prices: [faker.commerce.price()*10, faker.commerce.price()*50],
                     available: true,
                 })
 
